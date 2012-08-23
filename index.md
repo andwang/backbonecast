@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Hello World!
+title: Learn Backbone.js
 tagline: Supporting tagline
 ---
 {% include JB/setup %}
