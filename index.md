@@ -20,6 +20,6 @@ Backbone.js has 6 fundamental classes, including Model, Collection, View, Router
 There are a number of advanced concepts in Backbone.js. For example, how should a router communicate with a view? How do views communicate with each other when only transient states changed? Should we not use the anchor href attribute and let the router take care of all routing? There are so many questions I had with no answer to.
 
 ###Most importantly, they don't explain well.
-Most tutorials are just thrown-together pieces of Backbone.js code. There is little explanation on the reasoning of the design. Why did the author choose to write it this way rather than the other way? What makes a design choice good? The explanation is scanty or poor.
+Most tutorials are just thrown-together pieces of code using Backbone. There is little explanation on the reasoning of the design. Why did the author choose to write it this way rather than the other way? What makes a design choice good? The explanation is scanty or poor.
 
-This book is my attempt to teach backbone. There are a few core principles behind the design of a good Backbone app, and this is my attempt to make them known.
+This book is my attempt to teach backbone in a comprehensible and comprehensive way.
