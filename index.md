@@ -1,46 +1,25 @@
 ---
 layout: page
-title: Learn Backbone.js
-tagline: Supporting tagline
+title: Learning Backbone.js
+tagline: Step-by-step tutorial on Backbone.js
 ---
 {% include JB/setup %}
 
-Read [Jekyll Quick Start](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+At my friends' urging, I decided to write a tutorial on Backbone.js.
 
-Complete usage and documentation available at: [Jekyll Bootstrap](http://jekyllbootstrap.com)
+About one year ago when I began writing my first Backbone.js app, I found it a challenging framework to learn. It is different from any of the other UI framework I used, and at times I was not sure whether I was using it right. As any developer would do under the situation, I looked around for a tutorial or a book.
 
-## Update Author Attributes
+A quick google search revealed that there was no shortage of information available on Backbone.js. A few hours into my reading, however, I discovered that most tutorials were not very good.  There are a few common problems that plagued the tutorials on the subject:
 
-In `_config.yml` remember to specify your own data:
-    
-    title : My Blog =)
-    
-    author :
-      name : Name Lastname
-      email : blah@email.test
-      github : username
-      twitter : username
+###They skip over the basics.
 
-The theme should reference these variables whenever needed.
-    
-## Sample Posts
+Backbone.js has 6 fundamental classes, including Model, Collection, View, Router, History and Event. Few tutorials talk about how to use Event or History. Instead, these classes are just used in the code samples as if they have been introduced before. 
 
-This blog contains sample posts which help stage pages and blog data.
-When you don't need the samples anymore just delete the `_posts/core-samples` folder.
+###They don't go into enough depth.
 
-    $ rm -rf _posts/core-samples
+There are a number of advanced concepts in Backbone.js. For example, how should a router communicate with a view? How do views communicate with each other when only transient states changed? Should we not use the anchor href attribute and let the router take care of all routing? There are so many questions I had with no answer to.
 
-Here's a sample "posts list".
+###Most importantly, they don't explain well.
+Most tutorials are just thrown-together pieces of Backbone.js code. There is little explanation on the reasoning of the design. Why did the author choose to write it this way rather than the other way? What makes a design choice good? The explanation is scanty or poor.
 
-<ul class="posts">
-  {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
-
-## To-Do
-
-This theme is still unfinished. If you'd like to be added as a contributor, [please fork](http://github.com/plusjade/jekyll-bootstrap)!
-We need to clean up the themes, make theme usage guides with theme-specific markup examples.
-
-
+This book is my attempt to teach backbone. There are a few core principles behind the design of a good Backbone app, and this is my attempt to make them known.
