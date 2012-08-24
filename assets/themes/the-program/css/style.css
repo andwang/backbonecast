@@ -506,8 +506,8 @@ No styleguide reference.
 */
 @font-face {
   font-family: 'UbuntuMono-B';
-  src: url('/assets/themes/the-program/font/UbuntuMono-B-webfont.eot');
-  src: url('/assets/themes/the-program/font/UbuntuMono-B-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/themes/the-program/font/UbuntuMono-B-webfont.woff') format('font/opentype'), url('/assets/themes/the-program/font/UbuntuMono-B-webfont.ttf') format('font/opentype'), url('/assets/themes/the-program/font/UbuntuMono-B-webfont.svg#UbuntuMono-B') format('font/opentype');
+  src: url('../font/UbuntuMono-B-webfont.eot');
+  src: url('../font/UbuntuMono-B-webfont.eot?#iefix') format('embedded-opentype'), url('../font/UbuntuMono-B-webfont.woff') format('font/opentype'), url('../font/UbuntuMono-B-webfont.ttf') format('font/opentype'), url('../font/UbuntuMono-B-webfont.svg#UbuntuMono-B') format('font/opentype');
   font-weight: normal !important;
   font-style: normal;
 }
