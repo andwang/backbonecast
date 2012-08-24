@@ -22,4 +22,4 @@ There are a number of advanced concepts in Backbone.js. For example, how should 
 ###Most importantly, they don't explain well.
 Most tutorials are just thrown-together pieces of code using Backbone. There is little explanation on the reasoning of the design. Why did the author choose to write it this way rather than the other way? What makes a design choice good? The explanation is scanty or poor.
 
-This book is my attempt to teach backbone in a comprehensible and comprehensive way.
+This book is my attempt to teach backbone in a comprehensible and comprehensive way. If you discover a mistake in my writing, please 
