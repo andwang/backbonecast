@@ -723,7 +723,11 @@ pre {
 .unit-article li code {
   padding: 2px 5px;
   white-space: nowrap;
-  background-color: #fff04a;
+  /*background-color: #fff04a;*/
+  background-color: ghostwhite;
+  border: 1px solid #DEDEDE;
+  padding: 0 0.2em;
+  font-size: 0.8em;
 }
 .unit-article img {
   display: block;
