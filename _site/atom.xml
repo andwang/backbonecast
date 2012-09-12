@@ -4,7 +4,7 @@
  <title>Notes on Backbone.js</title>
  <link href="http://andwang.github.com/backbonecast/atom.xml" rel="self"/>
  <link href="http://andwang.github.com/backbonecast"/>
- <updated>2012-09-08T09:37:48-07:00</updated>
+ <updated>2012-09-10T21:55:05-07:00</updated>
  <id>http://andwang.github.com/backbonecast</id>
  <author>
    <name>Andrew Wang</name>
@@ -13,11 +13,86 @@
 
  
  <entry>
-   <title>Backbone inheritance</title>
+   <title>Underscore.js</title>
+   <link href="http://andwang.github.com/backbonecast/2012/09/09/underscorejs"/>
+   <updated>2012-09-09T00:00:00-07:00</updated>
+   <id>http://andwang.github.com/backbonecast/2012/09/09/underscorejs</id>
+   <content type="html">&lt;p&gt;&lt;code&gt;jQuery&lt;/code&gt; programmers know that &lt;code&gt;jQuery&lt;/code&gt; provides a number of utility functions that make JS programming more productive. These include miscellaneous functions such as &lt;code&gt;isNumeric&lt;/code&gt;, which tests if the argument is a number,&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='javascript'&gt;&lt;span class='nx'&gt;jQuery&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;isNumeric&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mi'&gt;2&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt; &lt;span class='c1'&gt;// returns true;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;and iterator functions such as &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;each&lt;/code&gt;, &lt;code&gt;unique&lt;/code&gt;, that take an array or object as input and iterate each of the elements to do something useful:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='javascript'&gt;&lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;map&lt;/span&gt;&lt;span class='p'&gt;([&lt;/span&gt;&lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='mi'&gt;2&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='mi'&gt;3&lt;/span&gt;&lt;span class='p'&gt;],&lt;/span&gt; &lt;span class='kd'&gt;function&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;num&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+  &lt;span class='k'&gt;return&lt;/span&gt; &lt;span class='mi'&gt;10&lt;/span&gt; &lt;span class='o'&gt;-&lt;/span&gt; &lt;span class='nx'&gt;num&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+&lt;span class='p'&gt;});&lt;/span&gt; &lt;span class='c1'&gt;// returns [9, 8, 7]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Like &lt;code&gt;jQuery&lt;/code&gt;, &lt;code&gt;Underscore.js&lt;/code&gt; is a JS utility library.&lt;/p&gt;
+
+&lt;h1 id='why_would_anyone_use_'&gt;Why would anyone use &lt;code&gt;Underscore&lt;/code&gt;?&lt;/h1&gt;
+
+&lt;h3 id='_is_much_more_powerful'&gt;&lt;code&gt;Underscore&lt;/code&gt; is much more powerful.&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;jQuery&lt;/code&gt; provides few JS utility functions, mostly to support its own DOM manipulation libraries. As a result, many useful utility methods are missing in &lt;code&gt;jQuery&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, &lt;code&gt;Underscore&lt;/code&gt; is designed to be a complete JS utility toolbox. There are many methods in &lt;code&gt;Underscore&lt;/code&gt; that are not in jQuery.&lt;/p&gt;
+
+&lt;p&gt;If you are looking for a JS utility function, you should look for it in &lt;code&gt;Underscore&lt;/code&gt; before writing your own.&lt;/p&gt;
+
+&lt;h3 id='_is_not_a_dom_utility_library'&gt;&lt;code&gt;Underscore&lt;/code&gt; is not a DOM utility library.&lt;/h3&gt;
+
+&lt;p&gt;Unlike &lt;code&gt;jQuery&lt;/code&gt;, which provides DOM selection and manipulation methods, &lt;code&gt;Underscore.js&lt;/code&gt; is a pure JS utility library that does not help with working with the DOM.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='javascript'&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;hr /&gt;
+&lt;h1 id='collections'&gt;Collections&lt;/h1&gt;
+
+&lt;p&gt;A collection is an array or an object. All of the methods below work on both an array, i.e. &lt;code&gt;[1, 2, 3]&lt;/code&gt;, and an object, i.e. &lt;code&gt;{ x: 1, y: 2 }&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;each&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;each&lt;/code&gt; method iterates over a list and calls the function passed in on each of the element.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='javascript'&gt;&lt;span class='nx'&gt;_&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;each&lt;/span&gt;&lt;span class='p'&gt;([&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;hello&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;world&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;peace&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;],&lt;/span&gt; &lt;span class='kd'&gt;function&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;word&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='nx'&gt;alert&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;word&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt; &lt;span class='p'&gt;}&lt;/span&gt;
+
+&lt;span class='nx'&gt;_&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;hr /&gt;
+&lt;h1 id='arrays'&gt;Arrays&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h1 id='objects'&gt;Objects&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h1 id='functions'&gt;Functions&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h1 id='utility'&gt;Utility&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h1 id='chaining'&gt;Chaining&lt;/h1&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>extend</title>
    <link href="http://andwang.github.com/backbonecast/Underscore.js/2012/09/05/underscore-extend"/>
    <updated>2012-09-05T00:00:00-07:00</updated>
    <id>http://andwang.github.com/backbonecast/Underscore.js/2012/09/05/underscore-extend</id>
-   <content type="html">&lt;p&gt;Love is futile.&lt;/p&gt;</content>
+   <content type="html">&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='javascript'&gt;&lt;span class='nx'&gt;_&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;extend&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='kd'&gt;function&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;obj&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+  &lt;span class='nx'&gt;each&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;slice&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;call&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;arguments&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='p'&gt;),&lt;/span&gt; &lt;span class='kd'&gt;function&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;source&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+    &lt;span class='k'&gt;for&lt;/span&gt; &lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;prop&lt;/span&gt; &lt;span class='k'&gt;in&lt;/span&gt; &lt;span class='nx'&gt;source&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+      &lt;span class='nx'&gt;obj&lt;/span&gt;&lt;span class='p'&gt;[&lt;/span&gt;&lt;span class='nx'&gt;prop&lt;/span&gt;&lt;span class='p'&gt;]&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='nx'&gt;source&lt;/span&gt;&lt;span class='p'&gt;[&lt;/span&gt;&lt;span class='nx'&gt;prop&lt;/span&gt;&lt;span class='p'&gt;];&lt;/span&gt;
+    &lt;span class='p'&gt;}&lt;/span&gt;
+  &lt;span class='p'&gt;});&lt;/span&gt;
+  &lt;span class='k'&gt;return&lt;/span&gt; &lt;span class='nx'&gt;obj&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+&lt;span class='p'&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;To anyone who has witten &lt;code&gt;Backbone&lt;/code&gt; code, the &lt;code&gt;extend&lt;/code&gt; method is familiar. All of your application&amp;#8217;s &lt;code&gt;Model&lt;/code&gt;s, &lt;code&gt;View&lt;/code&gt;s and &lt;code&gt;Router&lt;/code&gt;s are created by extending the corresponding classes of &lt;code&gt;Backbone&lt;/code&gt;:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='javascript'&gt;&lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;Person&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='nx'&gt;Backbone&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;Model&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;extend&lt;/span&gt;&lt;span class='p'&gt;({&lt;/span&gt;
+  &lt;span class='nx'&gt;defaults&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+    &lt;span class='nx'&gt;firstName&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;Andrew&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+    &lt;span class='nx'&gt;lastName&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;Wang&amp;#39;&lt;/span&gt;
+  &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;span class='p'&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Conceptually, &lt;code&gt;extend&lt;/code&gt; simply copies all the properties of the class&lt;/p&gt;</content>
  </entry>
  
  

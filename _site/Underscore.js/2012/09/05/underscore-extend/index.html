@@ -7,10 +7,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Backbone inheritance</title>
+	<title>extend</title>
 	<meta name="author" content="Andrew Wang">
 	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
-	<link href="http://feeds.feedburner.com/" rel="alternate" title="Backbone inheritance" type="application/atom+xml">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="extend" type="application/atom+xml">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
 </head>
 <body>
@@ -40,14 +40,33 @@
 			<header>
 				<div class="unit-head">
 					<div class="unit-inner unit-head-inner">
-						<h1 class="h2 entry-title">Backbone inheritance</h1>
+						<h1 class="h2 entry-title">extend</h1>
 					</div><!-- unit-inner -->
 				</div><!-- unit-head -->
 			</header>
 
 			<div class="bd">
 				<div class="entry-content">
-					<p>Love is futile.</p>
+					<div class='highlight'><pre><code class='javascript'><span class='nx'>_</span><span class='p'>.</span><span class='nx'>extend</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>)</span> <span class='p'>{</span>
+  <span class='nx'>each</span><span class='p'>(</span><span class='nx'>slice</span><span class='p'>.</span><span class='nx'>call</span><span class='p'>(</span><span class='nx'>arguments</span><span class='p'>,</span> <span class='mi'>1</span><span class='p'>),</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>source</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='k'>for</span> <span class='p'>(</span><span class='kd'>var</span> <span class='nx'>prop</span> <span class='k'>in</span> <span class='nx'>source</span><span class='p'>)</span> <span class='p'>{</span>
+      <span class='nx'>obj</span><span class='p'>[</span><span class='nx'>prop</span><span class='p'>]</span> <span class='o'>=</span> <span class='nx'>source</span><span class='p'>[</span><span class='nx'>prop</span><span class='p'>];</span>
+    <span class='p'>}</span>
+  <span class='p'>});</span>
+  <span class='k'>return</span> <span class='nx'>obj</span><span class='p'>;</span>
+<span class='p'>};</span>
+</code></pre>
+</div>
+<p>To anyone who has witten <code>Backbone</code> code, the <code>extend</code> method is familiar. All of your application&#8217;s <code>Model</code>s, <code>View</code>s and <code>Router</code>s are created by extending the corresponding classes of <code>Backbone</code>:</p>
+<div class='highlight'><pre><code class='javascript'><span class='kd'>var</span> <span class='nx'>Person</span> <span class='o'>=</span> <span class='nx'>Backbone</span><span class='p'>.</span><span class='nx'>Model</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>({</span>
+  <span class='nx'>defaults</span><span class='o'>:</span> <span class='p'>{</span>
+    <span class='nx'>firstName</span><span class='o'>:</span> <span class='s1'>&#39;Andrew&#39;</span><span class='p'>,</span>
+    <span class='nx'>lastName</span><span class='o'>:</span> <span class='s1'>&#39;Wang&#39;</span>
+  <span class='p'>}</span>
+<span class='p'>});</span>
+</code></pre>
+</div>
+<p>Conceptually, <code>extend</code> simply copies all the properties of the class</p>
 					<div class="meta">
 						<p class="date-publish">
 							Published: 
@@ -129,6 +148,8 @@
 							
 							
 							
+							<li class="next"><a class="internal" rel="next"  href="/2012/09/09/underscorejs" title="View Underscore.js">Underscore.js &raquo;</a></li>
+							
 						</ul>
 					</nav>
 					<p class="gotop">
@@ -150,7 +171,7 @@
 		<div class="unit-foot">
 			<div class="unit-inner unit-foot-inner">
 				<div class="misc vcard">
-					<img src='assets/images/andrew.png'></img>
+					<img src='/assets/themes/the-program/image/andrew.png'></img>
 					<span class="author fn n">Andrew Wang</span>
 					<div class="author-description">
 						<ul>

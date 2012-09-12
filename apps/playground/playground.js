@@ -8,7 +8,7 @@ $(function() {
     var code = editor.getSession().getValue();
     try {
       var result = eval(code);
-      $('.result').html(result); 
+      $('.result').html(result.toString()); 
     } catch (e) {
       $('.result').html(e.message);
     }
