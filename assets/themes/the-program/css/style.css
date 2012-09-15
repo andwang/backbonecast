@@ -601,6 +601,7 @@ pre {
 }
 .the-header .nav-global .chapters {
   text-transform: none;
+  list-style: decimal inside;
 }
 .the-header .nav-global .logo {
   text-transform: none;
