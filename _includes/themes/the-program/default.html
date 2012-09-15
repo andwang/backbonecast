@@ -21,8 +21,15 @@
 				<nav class="nav-global">
 					<ul>
 						<li class="logo"><a href="/">{{ site.title }}</a></li>
-						<li class="Chapters"><a href="/archive.html">Chapters</a></li>
-						<li class="Tag"><a href="/tags.html">Tags</a></li>
+						<li><a href="/chapters.html">Chapters</a>
+							<ol class="chapters">
+							{% for post in site.posts %}
+ 								<li>
+ 									<a href="{{ post.url }}">{{ post.title }}</a>
+ 								</li> 							
+ 							{% endfor %}
+							</ol>
+						</li>
 					</ul>
 				</nav>
 			</div><!-- unit-inner -->

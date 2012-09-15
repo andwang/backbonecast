@@ -1,0 +1,1484 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"initia",
+				"initialize"
+			],
+			[
+				"initializ",
+				"initializeWithMasterKey"
+			],
+			[
+				"prod",
+				"productIdentifier"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "_includes/themes/the-program/default.html",
+			"settings":
+			{
+				"buffer_size": 3909,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 247 files for \"><a href=\"/archive.html\">Chapters\" (regex, case sensitive)\n\n/Users/andrew/backbonecast/_includes/themes/the-program/default.html:\n   22  					<ul>\n   23  						<li class=\"logo\"><a href=\"/\">{{ site.title }}</a></li>\n   24: 						<li><a href=\"/archive.html\">Chapters</a>\n   25  							<ul class=\"Chapters\">\n   26  							{% for post in site.posts %}\n\n/Users/andrew/backbonecast/_site/archive.html:\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n   25: 						<li><a href=\"/archive.html\">Chapters</a>\n   26  							<ul class=\"Chapters\">\n   27  							\n\n/Users/andrew/backbonecast/_site/categories.html:\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n   25: 						<li><a href=\"/archive.html\">Chapters</a>\n   26  							<ul class=\"Chapters\">\n   27  							\n\n/Users/andrew/backbonecast/_site/index.html:\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n   25: 						<li><a href=\"/archive.html\">Chapters</a>\n   26  							<ul class=\"Chapters\">\n   27  							\n\n/Users/andrew/backbonecast/_site/pages.html:\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n   25: 						<li><a href=\"/archive.html\">Chapters</a>\n   26  							<ul class=\"Chapters\">\n   27  							\n\n/Users/andrew/backbonecast/_site/2012/09/09/underscorejs/index.html:\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n   25: 						<li><a href=\"/archive.html\">Chapters</a>\n   26  							<ul class=\"Chapters\">\n   27  							\n\n/Users/andrew/backbonecast/_site/apps/playground/playground.html:\n   20                <ul>\n   21                  <li class=\"logo\"><a href=\"/\">Wang on Backbone.js</a></li>\n   22:                 <li class=\"Chapters\"><a href=\"/archive.html\">Chapters</a></li>\n   23                  <li class=\"Tag\"><a href=\"/tags.html\">Tags</a></li>\n   24                </ul>\n\n/Users/andrew/backbonecast/_site/Underscore.js/2012/09/05/underscore-extend/index.html:\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n   25: 						<li><a href=\"/archive.html\">Chapters</a>\n   26  							<ul class=\"Chapters\">\n   27  							\n\n/Users/andrew/backbonecast/apps/playground/playground.html:\n   20                <ul>\n   21                  <li class=\"logo\"><a href=\"/\">Wang on Backbone.js</a></li>\n   22:                 <li class=\"Chapters\"><a href=\"/archive.html\">Chapters</a></li>\n   23                  <li class=\"Tag\"><a href=\"/tags.html\">Tags</a></li>\n   24                </ul>\n\n9 matches across 9 files\n\n\nSearching 246 files for \".nav-global\" (regex, case sensitive)\n\n/Users/andrew/backbonecast/_includes/themes/the-program/default.html:\n   19  		<div class=\"unit-head\">\n   20  			<div class=\"unit-inner unit-head-inner\">\n   21: 				<nav class=\"nav-global\">\n   22  					<ul>\n   23  						<li class=\"logo\"><a href=\"/\">{{ site.title }}</a></li>\n\n/Users/andrew/backbonecast/_site/archive.html:\n   20  		<div class=\"unit-head\">\n   21  			<div class=\"unit-inner unit-head-inner\">\n   22: 				<nav class=\"nav-global\">\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n\n/Users/andrew/backbonecast/_site/categories.html:\n   20  		<div class=\"unit-head\">\n   21  			<div class=\"unit-inner unit-head-inner\">\n   22: 				<nav class=\"nav-global\">\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n\n/Users/andrew/backbonecast/_site/index.html:\n   20  		<div class=\"unit-head\">\n   21  			<div class=\"unit-inner unit-head-inner\">\n   22: 				<nav class=\"nav-global\">\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n\n/Users/andrew/backbonecast/_site/pages.html:\n   20  		<div class=\"unit-head\">\n   21  			<div class=\"unit-inner unit-head-inner\">\n   22: 				<nav class=\"nav-global\">\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n\n/Users/andrew/backbonecast/_site/2012/09/09/underscorejs/index.html:\n   20  		<div class=\"unit-head\">\n   21  			<div class=\"unit-inner unit-head-inner\">\n   22: 				<nav class=\"nav-global\">\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n\n/Users/andrew/backbonecast/_site/apps/playground/playground.html:\n   17          <div class=\"unit-head\">\n   18            <div class=\"unit-inner unit-head-inner\">\n   19:             <nav class=\"nav-global\">\n   20                <ul>\n   21                  <li class=\"logo\"><a href=\"/\">Wang on Backbone.js</a></li>\n\n/Users/andrew/backbonecast/_site/assets/themes/the-program/css/style.css:\n  597    color: #2d2d2d;\n  598  }\n  599: .the-header .nav-global {\n  600    text-transform: uppercase;\n  601  }\n  602: .the-header .nav-global .logo {\n  603    text-transform: none;\n  604  }\n  605: .the-header .nav-global .forkme {\n  606    position: relative;\n  607    top: 2px;\n  ...\n  904    padding: 26px;\n  905  }\n  906: .the-header .unit-head .nav-global .logo {\n  907    display: block;\n  908    width: auto;\n  909  }\n  910: .the-header .unit-head .nav-global .logo a {\n  911    display: block;\n  912    font-size: 30px;\n  ...\n  964      padding: 0;\n  965    }\n  966:   .the-header .unit-head .nav-global li {\n  967      float: left;\n  968      border: 1px solid rgba(0, 0, 0, 0.05);\n  969      border-width: 0 1px 0 0;\n  970    }\n  971:   .the-header .unit-head .nav-global li a,\n  972:   .the-header .unit-head .nav-global li div {\n  973      display: block;\n  974      padding: 26px;\n  975      height: 26px;\n  976    }\n  977:   .the-header .unit-head .nav-global li a:hover {\n  978      background-color: #fff04a;\n  979      color: #474747;\n  980    }\n  981:   .the-header .unit-head .nav-global li:nth-child(2) {\n  982      border-width: 0 1px;\n  983    }\n  984:   .the-header .unit-head .nav-global li:last-child {\n  985      border-width: 0;\n  986    }\n  987:   .the-header .unit-head .nav-global .logo {\n  988      border-bottom: 1px solid rgba(0, 0, 0, 0.05);\n  989      border-right: none 0;\n  ...\n  991      width: 100%;\n  992    }\n  993:   .the-header .unit-head .nav-global .logo a {\n  994      font-size: 30px;\n  995      line-height: normal;\n  996    }\n  997:   .the-header .unit-head .nav-global .logo a:hover {\n  998      background-color: transparent;\n  999    }\n ....\n 1003  */\n 1004  @media only screen and (min-width: 1280px) {\n 1005:   .the-header .unit-head .nav-global .logo {\n 1006      border-bottom: 0 none;\n 1007      display: block;\n 1008      width: auto;\n 1009    }\n 1010:   .the-header .unit-head .nav-global .logo a {\n 1011      line-height: 18px;\n 1012      margin-bottom: 0;\n ....\n 1045      padding: 26px;\n 1046    }\n 1047:   .the-header .unit-head .nav-global li {\n 1048      float: none;\n 1049      border: none;\n 1050    }\n 1051:   .the-header .unit-head .nav-global li a,\n 1052:   .the-header .unit-head .nav-global li div {\n 1053      display: block;\n 1054      padding: 2px 5px;\n 1055      height: auto;\n 1056    }\n 1057:   .the-header .unit-head .nav-global li:nth-child(2) {\n 1058      border-width: 0;\n 1059    }\n 1060:   .the-header .unit-head .nav-global .logo {\n 1061      border-bottom: none 0;\n 1062      display: list-item;\n 1063      width: auto;\n 1064    }\n 1065:   .the-header .unit-head .nav-global .logo a {\n 1066      display: block;\n 1067      font-size: 30px;\n\n/Users/andrew/backbonecast/_site/assets/themes/the-program/css/style.less:\n   72  		a:visited { color: @main-font-color; }\n   73  	}\n   74: 	.nav-global {\n   75  		text-transform: uppercase;\n   76  		.logo { text-transform: none; }\n\n/Users/andrew/backbonecast/_site/Underscore.js/2012/09/05/underscore-extend/index.html:\n   20  		<div class=\"unit-head\">\n   21  			<div class=\"unit-inner unit-head-inner\">\n   22: 				<nav class=\"nav-global\">\n   23  					<ul>\n   24  						<li class=\"logo\"><a href=\"/\">Notes on Backbone.js</a></li>\n\n/Users/andrew/backbonecast/apps/playground/playground.html:\n   17          <div class=\"unit-head\">\n   18            <div class=\"unit-inner unit-head-inner\">\n   19:             <nav class=\"nav-global\">\n   20                <ul>\n   21                  <li class=\"logo\"><a href=\"/\">Wang on Backbone.js</a></li>\n\n/Users/andrew/backbonecast/assets/themes/the-program/css/_mediaqueries.less:\n    4  		.unit-head {\n    5  			padding: @line-height * 1px;\n    6: 			.nav-global {\n    7  				.logo {\n    8  					display: block;\n    .\n   76  		.unit-head {\n   77  			padding: 0;\n   78: 			.nav-global {\n   79  				li {\n   80  					float: left;\n   ..\n  119  	.the-header {\n  120  		.unit-head {\n  121: 			.nav-global {\n  122  				.logo {\n  123  					border-bottom: 0 none;\n  ...\n  170  		.unit-head {\n  171  			padding: @line-height * 1px;\n  172: 			.nav-global {\n  173  				li {\n  174  					float: none;\n\n/Users/andrew/backbonecast/assets/themes/the-program/css/style.css:\n  597    color: #2d2d2d;\n  598  }\n  599: .the-header .nav-global {\n  600    text-transform: uppercase;\n  601  }\n  602: .the-header .nav-global .logo {\n  603    text-transform: none;\n  604  }\n  605: .the-header .nav-global .forkme {\n  606    position: relative;\n  607    top: 2px;\n  ...\n  904    padding: 26px;\n  905  }\n  906: .the-header .unit-head .nav-global .logo {\n  907    display: block;\n  908    width: auto;\n  909  }\n  910: .the-header .unit-head .nav-global .logo a {\n  911    display: block;\n  912    font-size: 30px;\n  ...\n  964      padding: 0;\n  965    }\n  966:   .the-header .unit-head .nav-global li {\n  967      float: left;\n  968      border: 1px solid rgba(0, 0, 0, 0.05);\n  969      border-width: 0 1px 0 0;\n  970    }\n  971:   .the-header .unit-head .nav-global li a,\n  972:   .the-header .unit-head .nav-global li div {\n  973      display: block;\n  974      padding: 26px;\n  975      height: 26px;\n  976    }\n  977:   .the-header .unit-head .nav-global li a:hover {\n  978      background-color: #fff04a;\n  979      color: #474747;\n  980    }\n  981:   .the-header .unit-head .nav-global li:nth-child(2) {\n  982      border-width: 0 1px;\n  983    }\n  984:   .the-header .unit-head .nav-global li:last-child {\n  985      border-width: 0;\n  986    }\n  987:   .the-header .unit-head .nav-global .logo {\n  988      border-bottom: 1px solid rgba(0, 0, 0, 0.05);\n  989      border-right: none 0;\n  ...\n  991      width: 100%;\n  992    }\n  993:   .the-header .unit-head .nav-global .logo a {\n  994      font-size: 30px;\n  995      line-height: normal;\n  996    }\n  997:   .the-header .unit-head .nav-global .logo a:hover {\n  998      background-color: transparent;\n  999    }\n ....\n 1003  */\n 1004  @media only screen and (min-width: 1280px) {\n 1005:   .the-header .unit-head .nav-global .logo {\n 1006      border-bottom: 0 none;\n 1007      display: block;\n 1008      width: auto;\n 1009    }\n 1010:   .the-header .unit-head .nav-global .logo a {\n 1011      line-height: 18px;\n 1012      margin-bottom: 0;\n ....\n 1045      padding: 26px;\n 1046    }\n 1047:   .the-header .unit-head .nav-global li {\n 1048      float: none;\n 1049      border: none;\n 1050    }\n 1051:   .the-header .unit-head .nav-global li a,\n 1052:   .the-header .unit-head .nav-global li div {\n 1053      display: block;\n 1054      padding: 2px 5px;\n 1055      height: auto;\n 1056    }\n 1057:   .the-header .unit-head .nav-global li:nth-child(2) {\n 1058      border-width: 0;\n 1059    }\n 1060:   .the-header .unit-head .nav-global .logo {\n 1061      border-bottom: none 0;\n 1062      display: list-item;\n 1063      width: auto;\n 1064    }\n 1065:   .the-header .unit-head .nav-global .logo a {\n 1066      display: block;\n 1067      font-size: 30px;\n\n/Users/andrew/backbonecast/assets/themes/the-program/css/style.less:\n   72  		a:visited { color: @main-font-color; }\n   73  	}\n   74: 	.nav-global {\n   75  		text-transform: uppercase;\n   76  		.logo { text-transform: none; }\n\n59 matches across 14 files\n",
+			"settings":
+			{
+				"buffer_size": 11866,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "assets/themes/the-program/css/style.less",
+			"settings":
+			{
+				"buffer_size": 7698,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_site/assets/themes/the-program/css/style.css",
+			"settings":
+			{
+				"buffer_size": 28449,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_site/assets/themes/the-program/css/style.less",
+			"settings":
+			{
+				"buffer_size": 7660,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/themes/the-program/css/style.css",
+			"settings":
+			{
+				"buffer_size": 28511,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "archive.html",
+			"settings":
+			{
+				"buffer_size": 168,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_config.yml",
+			"settings":
+			{
+				"buffer_size": 4218,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/andrew/backbonecast/assets/themes/the-program/font/UbuntuMono-B-webfont.svg",
+		"/Users/andrew/backbonecast/_layouts/default.html",
+		"/Users/andrew/backbonecast/atom.xml",
+		"/Users/andrew/backbonecast/assets/themes/the-program/css/_helper.less",
+		"/Users/andrew/backbonecast/assets/themes/the-program/skin/100-90-5-monochrome.png",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/data_browser.js",
+		"/Users/andrew/hungry/parse/config/assets.yml",
+		"/Users/andrew/hungry/js/grunt.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/collections/classes.js",
+		"/Users/andrew/hungry/parse/app/controllers/rest_controller.rb",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/parse.js",
+		"/Users/andrew/hungry/js/README",
+		"/Users/andrew/hungry/js/version_notes.txt",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/models/state.js",
+		"/Users/andrew/hungry/parse/public/javascripts/models/app.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/views/grid.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/views/classes.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/routers/router.js",
+		"/Users/andrew/hungry/parse/app/views/collections/_browser.html.erb",
+		"/Users/andrew/hungry/js/test/parse_geo_point_test.js",
+		"/Users/andrew/hungry/js/test/localhost.js",
+		"/Users/andrew/hungry/parse/public/downloads/javascript/parse-1.0.24.js",
+		"/Users/andrew/hungry/js/src/parse.js",
+		"/Users/andrew/hungry/parse/app/views/collections/_class_list.jst",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/views/message.js",
+		"/Users/andrew/hungry/parse/test/javascript/test/data_browser.js",
+		"/Users/andrew/hungry/parse/app/controllers/rows_controller.rb",
+		"/Users/andrew/hungry/parse/lib/controllers/data_controller_methods.rb",
+		"/Users/andrew/hungry/parse/lib/parse/data_interface.rb",
+		"/Users/andrew/hungry/parse/app/controllers/collections_controller.rb",
+		"/Users/andrew/hungry/js/src/parse_object.js",
+		"/Users/andrew/hungry/parse/app/models/parse_app.rb",
+		"/Users/andrew/parse_todo/js/todos.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/schema.js",
+		"/Users/andrew/hungry/parse/public/javascripts/vendor/backbone/backbone.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/views/settings.js",
+		"/Users/andrew/hungry/parse/public/javascripts/application.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/editors.js",
+		"/Users/andrew/hungry/parse/app/controllers/application_controller.rb",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/views/admin_grid.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/routers/admin_router.js",
+		"/Users/andrew/hungry/parse/app/controllers/admin_controller.rb",
+		"/Users/andrew/hungry/parse/app/views/layouts/admin.html.erb",
+		"/Users/andrew/hungry/parse/app/views/layouts/application.html.erb",
+		"/Users/andrew/hungry/parse/db/seeds.rb",
+		"/Users/andrew/hungry/parse/app/models/user.rb",
+		"/Users/andrew/hungry/parse/app/views/apps/_header.html.erb",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/views/data_browser_view.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/utils.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/formatters.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/views/new_class.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/views/new_column.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/views/drop_column.js",
+		"/Users/andrew/hungry/parse/Rakefile",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/models/row.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/models/collection.js",
+		"/Users/andrew/hungry/parse/public/javascripts/parse_utils.js",
+		"/Users/andrew/hungry/js/src/parse_geo_point.js",
+		"/Users/andrew/hungry/parse/app/views/collections/_new_class.jst",
+		"/Users/andrew/hungry/parse/app/views/home/_blog_feed.jst",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/views/class_list.js",
+		"/Users/andrew/hungry/parse/app/views/collections/_drop_column.jst",
+		"/Users/andrew/hungry/parse/public/javascripts/parse_schema.js",
+		"/Users/andrew/hungry/parse/public/javascripts/controllers/quickstart.js",
+		"/Users/andrew/hungry/js/src/parse_collection.js",
+		"/Users/andrew/hungry/parse/public/javascripts/parse_editors.js",
+		"/Users/andrew/hungry/js/src/parse_view.js",
+		"/Users/andrew/hungry/parse/app/views/collections/index.html.erb",
+		"/Users/andrew/hungry/parse/app/views/admin/collections/index.html.erb",
+		"/Users/andrew/hungry/parse/public/javascripts/views/admin/admin_collection_browser.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/gridview.js",
+		"/Users/andrew/hungry/parse/public/javascripts/controllers/collection_router.js",
+		"/Users/andrew/hungry/parse/public/javascripts/parse_formatters.js",
+		"/Users/andrew/hungry/parse/public/javascripts/models/row.js",
+		"/Users/andrew/hungry/parse/public/javascripts/models/collection.js",
+		"/Users/andrew/hungry/parse/public/javascripts/controllers/admin_collection_router.js",
+		"/Users/andrew/hungry/parse/public/javascripts/views/collection_browser/class_list.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/collections/collections.js",
+		"/Users/andrew/hungry/parse/public/javascripts/data_browser/collections/rows.js",
+		"/Users/andrew/hungry/parse/app/views/apps/quickstart_push.html.erb",
+		"/Users/andrew/hungry/parse/public/javascripts/parse.js",
+		"/Users/andrew/hungry/parse/public/javascripts/collection_browser.js",
+		"/Users/andrew/hungry/parse/public/javascripts/jquery.parse.js",
+		"/Users/andrew/hungry/parse/app/views/layouts/_head.html.erb",
+		"/Users/andrew/hungry/parse/config/deploy_helpers/apps.rb",
+		"/Users/andrew/hungry/parse/app/views/apps/quickstart.html.erb",
+		"/Users/andrew/hungry/parse/app/views/layouts/_bottom_scripts.html.erb",
+		"/Users/andrew/hungry/parse/Gemfile",
+		"/Users/andrew/hungry/.git/config",
+		"/Users/andrew/hungry/.gitmodules",
+		"/Users/andrew/hungry/parse/app/controllers/rest_users_controller.rb",
+		"/Users/andrew/hungry/parse/config/routes.rb",
+		"/Users/andrew/hungry/parse/README",
+		"/Users/andrew/hungry/parse/public/downloads/javascript/parse-1.0.20.js",
+		"/Users/andrew/hungry/parse/public/javascripts/vendor/underscore.js",
+		"/Users/andrew/hungry/parse/public/downloads/javascript/parse-0.2.0.min.js",
+		"/Users/andrew/foo/parse/here.sh",
+		"/Users/andrew/foo/parse/cloud/main.js",
+		"/Users/andrew/hungry/parse/app/views/layouts/_mail_unsub.text.erb",
+		"/Users/andrew/hungry/parse/app/views/apps/_menu.html.erb",
+		"/Users/andrew/hungry/parse/app/helpers/apps_helper.rb",
+		"/Users/andrew/hungry/parse/app/views/apps/index.html.erb",
+		"/Users/andrew/hungry/parse/app/views/admin/users/index.html.erb",
+		"/Users/andrew/hungry/parse/app/views/admin/app_stats/index.html.erb",
+		"/Users/andrew/hungry/parse/app/views/accounts/_menu.html.erb",
+		"/Users/andrew/backbonecast/assets/themes/the-program/css/style.css",
+		"/Users/andrew/backbonecast/_includes/themes/the-program/default.html",
+		"/Users/andrew/backbonecast/assets/themes/the-program/css/style.less",
+		"/Users/andrew/backbonecast/Rakefile",
+		"/Users/andrew/cloud",
+		"/Users/andrew/hungry/js/test/parse_object_test.js",
+		"/Users/andrew/backbonecast/_site/pages.html",
+		"/Users/andrew/Downloads/Parse 3.framework/Versions/1.1.0/Headers/PFLogInViewController.h",
+		"/Users/andrew/backbonecast/_includes/themes/twitter/default.html",
+		"/Users/andrew/artgalaprod/app/views/home/about.html.erb",
+		"/Users/andrew/artgalaprod/app/assets/stylesheets/home.css.scss",
+		"/Users/andrew/artgalaprod/app/assets/stylesheets/about.css.scss",
+		"/Users/andrew/artgalaprod/app/assets/stylesheets/Roboto-Thin.ttf",
+		"/Users/andrew/hungry/parse/app/controllers/rest_classes_controller.rb",
+		"/Users/andrew/hungry/parse/test/integration/rest_classes_test.rb",
+		"/Users/andrew/hungry/parse/db/migrate/20110608075017_get_rid_of_unnecessary_cols_on_client_application.rb",
+		"/Users/andrew/hungry/js/build/parse-1.0.16.js",
+		"/Users/andrew/node_modules/grunt/grunt.js",
+		"/Users/andrew/Sites/todo/index.html",
+		"/Users/andrew/artgalaprod/app/views/layouts/application.html.erb",
+		"/Users/andrew/artgalaprod/app/assets/stylesheets/foundation.css",
+		"/Users/andrew/artgalaprod/app/assets/images/amazon_icon.png",
+		"/Users/andrew/artgalaprod/log/development.log"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 105.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			".nav-global",
+			"><a href=\"/archive.html\">Chapters",
+			"nav-global",
+			"console.log\\(appJson\\)",
+			"console.log(appJson)",
+			"key",
+			"release",
+			"build",
+			"_decode",
+			"val",
+			"App\\.Models\\.App",
+			"Parse\\.",
+			"serverURL",
+			"Parse.serverURL",
+			"Parse.serverUrl",
+			"root_url",
+			"updateRows",
+			"localhost",
+			"className",
+			"this\\.on",
+			"\\'render\\'",
+			"initialize",
+			"getCollection",
+			"this.getCollection",
+			"this.get",
+			"page",
+			"getCollection",
+			"DataBrowser\\.Models\\.Row",
+			"dispose",
+			"el",
+			"AppState",
+			"collection",
+			"collections",
+			"refresh",
+			"refreshFromResponse",
+			"getCollection",
+			"Parse\\.Schema",
+			"Parse\\.Utils",
+			"getRelatedObjectClassForField",
+			"classListView",
+			"classlist",
+			"collections",
+			"rows",
+			"getCollection",
+			"admin?",
+			"require_admin_user",
+			"roles",
+			"AdminGrid",
+			"render.*browser",
+			"render.*csv",
+			"render.*CSV",
+			"render.*browser",
+			"el",
+			"friendly_id",
+			"render browser",
+			"render \\\"browser",
+			"render _browser",
+			"App\\.Models\\.App",
+			"_browser",
+			"el",
+			"App\\.Views\\.Dashboard\\.Menu",
+			"DataBrowser\\.Routers",
+			"DataBrowser.Model",
+			"DataBrowser.Collection",
+			"DataBrowser.Collections",
+			"DataBrowser.Rows",
+			"DataBrowser.Collections",
+			"DataBrowser.Models",
+			"getClassNames",
+			"DataBrowser.Models.Collection",
+			"DataBrowser.Models.Row",
+			"DataBrowser.Model",
+			"P\\.",
+			"DataBrowser.",
+			"P\\.",
+			"parseDate",
+			"DataBrowser.Collections.Collections",
+			"$el",
+			"el",
+			"renderError",
+			"$el",
+			"parseDateISO",
+			"\\(\\{",
+			"( {",
+			"({",
+			"JST",
+			"id",
+			"this.el",
+			"debugger",
+			"submit",
+			"App\\.",
+			"App.",
+			"App.Views",
+			"Data",
+			"App\\.Views\\.CollectionBrowser",
+			"App.Views.Collection",
+			"DataBrowser",
+			"DataBrowser.Routers.",
+			"CollectionRouter",
+			"GridView",
+			"App.Routers",
+			"router",
+			"App.Collections.Collections",
+			"App.Models.Collection",
+			"App.Models.App",
+			"App.Models.Collection",
+			"App.Models.User",
+			"sync",
+			"var App =",
+			"Parse",
+			"window\\.parse",
+			"new App.Routers.QuickStart",
+			"App.Routers.extend",
+			"Parse.Router.extend",
+			"quickstart",
+			"QuickStart",
+			"AdminCollectionRouter",
+			"new.*Collection.*Router",
+			"new.*CollectionRouter",
+			"Parse.history.start",
+			"new.*Router",
+			"new.*Controller",
+			"new.*Router",
+			"new.*History",
+			"CollectionRouter",
+			"App.Routers.CollectionRouter",
+			"Parse.Router.extend",
+			"Parse.Router"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"DataBrowser\\.",
+			"Parse"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 7,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "_includes/themes/the-program/default.html",
+					"settings":
+					{
+						"buffer_size": 3909,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1232,
+								1232
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 352.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"settings":
+					{
+						"buffer_size": 11866,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										256,
+										289
+									],
+									[
+										526,
+										559
+									],
+									[
+										771,
+										804
+									],
+									[
+										1011,
+										1044
+									],
+									[
+										1251,
+										1284
+									],
+									[
+										1515,
+										1548
+									],
+									[
+										1821,
+										1854
+									],
+									[
+										2159,
+										2192
+									],
+									[
+										2459,
+										2492
+									],
+									[
+										2870,
+										2881
+									],
+									[
+										3123,
+										3134
+									],
+									[
+										3383,
+										3394
+									],
+									[
+										3638,
+										3649
+									],
+									[
+										3893,
+										3904
+									],
+									[
+										4172,
+										4183
+									],
+									[
+										4469,
+										4480
+									],
+									[
+										4718,
+										4729
+									],
+									[
+										4796,
+										4807
+									],
+									[
+										4875,
+										4886
+									],
+									[
+										5014,
+										5025
+									],
+									[
+										5120,
+										5131
+									],
+									[
+										5265,
+										5276
+									],
+									[
+										5435,
+										5446
+									],
+									[
+										5485,
+										5496
+									],
+									[
+										5627,
+										5638
+									],
+									[
+										5760,
+										5771
+									],
+									[
+										5865,
+										5876
+									],
+									[
+										5964,
+										5975
+									],
+									[
+										6147,
+										6158
+									],
+									[
+										6272,
+										6283
+									],
+									[
+										6453,
+										6464
+									],
+									[
+										6601,
+										6612
+									],
+									[
+										6757,
+										6768
+									],
+									[
+										6866,
+										6877
+									],
+									[
+										6916,
+										6927
+									],
+									[
+										7061,
+										7072
+									],
+									[
+										7162,
+										7173
+									],
+									[
+										7314,
+										7325
+									],
+									[
+										7533,
+										7544
+									],
+									[
+										7819,
+										7830
+									],
+									[
+										8110,
+										8121
+									],
+									[
+										8380,
+										8391
+									],
+									[
+										8501,
+										8512
+									],
+									[
+										8616,
+										8627
+									],
+									[
+										8761,
+										8772
+									],
+									[
+										8938,
+										8949
+									],
+									[
+										9016,
+										9027
+									],
+									[
+										9095,
+										9106
+									],
+									[
+										9234,
+										9245
+									],
+									[
+										9340,
+										9351
+									],
+									[
+										9485,
+										9496
+									],
+									[
+										9655,
+										9666
+									],
+									[
+										9705,
+										9716
+									],
+									[
+										9847,
+										9858
+									],
+									[
+										9980,
+										9991
+									],
+									[
+										10085,
+										10096
+									],
+									[
+										10184,
+										10195
+									],
+									[
+										10367,
+										10378
+									],
+									[
+										10492,
+										10503
+									],
+									[
+										10673,
+										10684
+									],
+									[
+										10821,
+										10832
+									],
+									[
+										10977,
+										10988
+									],
+									[
+										11086,
+										11097
+									],
+									[
+										11136,
+										11147
+									],
+									[
+										11281,
+										11292
+									],
+									[
+										11382,
+										11393
+									],
+									[
+										11534,
+										11545
+									],
+									[
+										11747,
+										11758
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								11755,
+								11755
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 4589.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "assets/themes/the-program/css/style.less",
+					"settings":
+					{
+						"buffer_size": 7698,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1664,
+								1627
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1292.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "_site/assets/themes/the-program/css/style.css",
+					"settings":
+					{
+						"buffer_size": 28449,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11013,
+								11013
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 13386.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "_site/assets/themes/the-program/css/style.less",
+					"settings":
+					{
+						"buffer_size": 7660,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1595,
+								1584
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1311.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "assets/themes/the-program/css/style.css",
+					"settings":
+					{
+						"buffer_size": 28511,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11013,
+								11013
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 13386.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "archive.html",
+					"settings":
+					{
+						"buffer_size": 168,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								91,
+								91
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "_config.yml",
+					"settings":
+					{
+						"buffer_size": 4218,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								221,
+								221
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"config",
+				"_config.yml"
+			],
+			[
+				"default",
+				"_includes/themes/the-program/default.html"
+			],
+			[
+				"default.html",
+				"_layouts/default.html"
+			],
+			[
+				"browser",
+				"app/views/collections/_browser.html.erb"
+			],
+			[
+				"databrowser",
+				"public/javascripts/data_browser/data_browser.js"
+			],
+			[
+				"parseapp",
+				"app/models/parse_app.rb"
+			],
+			[
+				"_browser",
+				"app/views/collections/_browser.html.erb"
+			],
+			[
+				"parse_app",
+				"app/models/parse_app.rb"
+			],
+			[
+				"app.js",
+				"public/javascripts/models/app.js"
+			],
+			[
+				"rest_contr",
+				"app/controllers/rest_controller.rb"
+			],
+			[
+				"assets",
+				"config/assets.yml"
+			],
+			[
+				"state.js",
+				"public/javascripts/data_browser/models/state.js"
+			],
+			[
+				"parse.js",
+				"public/javascripts/data_browser/parse.js"
+			],
+			[
+				"classes",
+				"public/javascripts/data_browser/collections/classes.js"
+			],
+			[
+				"app",
+				"public/javascripts/models/app.js"
+			],
+			[
+				"data_browser",
+				"public/javascripts/data_browser/data_browser.js"
+			],
+			[
+				"geo_point",
+				"/Users/andrew/hungry/js/test/parse_geo_point_test.js"
+			],
+			[
+				"_brow",
+				"app/views/collections/_browser.html.erb"
+			],
+			[
+				"router.js",
+				"public/javascripts/data_browser/routers/router.js"
+			],
+			[
+				"class_list",
+				"app/views/collections/_class_list.jst"
+			],
+			[
+				"grid.js",
+				"public/javascripts/data_browser/views/grid.js"
+			],
+			[
+				"state",
+				"public/javascripts/data_browser/models/state.js"
+			],
+			[
+				"_class_list",
+				"app/views/collections/_class_list.jst"
+			],
+			[
+				"grid",
+				"public/javascripts/data_browser/views/grid.js"
+			],
+			[
+				"data_browser.js",
+				"public/javascripts/data_browser/data_browser.js"
+			],
+			[
+				"data_brow",
+				"test/javascript/test/data_browser.js"
+			],
+			[
+				"message",
+				"public/javascripts/data_browser/views/message.js"
+			],
+			[
+				"classlist",
+				"app/views/collections/_class_list.jst"
+			],
+			[
+				"data_interface",
+				"lib/parse/data_interface.rb"
+			],
+			[
+				"datacontrollermethods",
+				"lib/controllers/data_controller_methods.rb"
+			],
+			[
+				"collections",
+				"app/controllers/collections_controller.rb"
+			],
+			[
+				"collectionscontro",
+				"app/controllers/collections_controller.rb"
+			],
+			[
+				"rows",
+				"app/controllers/rows_controller.rb"
+			],
+			[
+				"router",
+				"public/javascripts/data_browser/routers/router.js"
+			],
+			[
+				"ba",
+				"public/javascripts/vendor/backbone/backbone.js"
+			],
+			[
+				"settings",
+				"public/javascripts/data_browser/views/settings.js"
+			],
+			[
+				"admin_grid",
+				"public/javascripts/data_browser/views/admin_grid.js"
+			],
+			[
+				"adminrouter",
+				"public/javascripts/data_browser/routers/admin_router.js"
+			],
+			[
+				"user.rb",
+				"app/models/user.rb"
+			],
+			[
+				"admin_",
+				"app/controllers/admin_controller.rb"
+			],
+			[
+				"seed",
+				"db/seeds.rb"
+			],
+			[
+				"user",
+				"app/models/user.rb"
+			],
+			[
+				"admin_router",
+				"public/javascripts/data_browser/routers/admin_router.js"
+			],
+			[
+				"application.erb",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"admin.erb",
+				"app/views/layouts/admin.html.erb"
+			],
+			[
+				"admin",
+				"app/controllers/admin_controller.rb"
+			],
+			[
+				"routers",
+				"public/javascripts/data_browser/routers/router.js"
+			],
+			[
+				"asset",
+				"config/assets.yml"
+			],
+			[
+				"application",
+				"public/javascripts/application.js"
+			],
+			[
+				"utils.js",
+				"public/javascripts/data_browser/utils.js"
+			],
+			[
+				"assets.yml",
+				"config/assets.yml"
+			],
+			[
+				"new_class",
+				"app/views/collections/_new_class.jst"
+			],
+			[
+				"",
+				"app/views/home/_blog_feed.jst"
+			],
+			[
+				"blogfee",
+				"app/views/home/_blog_feed.jst"
+			],
+			[
+				"data_browserview",
+				"public/javascripts/data_browser/views/data_browser_view.js"
+			],
+			[
+				"drop_colu",
+				"app/views/collections/_drop_column.jst"
+			],
+			[
+				"gridjs",
+				"public/javascripts/data_browser/views/grid.js"
+			],
+			[
+				"drop_co",
+				"app/views/collections/_drop_column.jst"
+			],
+			[
+				"admin_gr",
+				"public/javascripts/data_browser/views/admin_grid.js"
+			],
+			[
+				"collection.js",
+				"public/javascripts/data_browser/models/collection.js"
+			],
+			[
+				"admincollection",
+				"public/javascripts/views/admin/admin_collection_browser.js"
+			],
+			[
+				"admincollec",
+				"public/javascripts/controllers/admin_collection_router.js"
+			],
+			[
+				"row.js",
+				"public/javascripts/models/row.js"
+			],
+			[
+				"application.js",
+				"public/javascripts/application.js"
+			],
+			[
+				"backbonejs",
+				"public/javascripts/vendor/backbone/backbone.js"
+			],
+			[
+				"gridview",
+				"public/javascripts/data_browser/gridview.js"
+			],
+			[
+				"quickstar",
+				"public/javascripts/controllers/quickstart.js"
+			],
+			[
+				"collectio_brow",
+				"public/javascripts/collection_browser.js"
+			],
+			[
+				"collection_browser",
+				"public/javascripts/collection_browser.js"
+			],
+			[
+				"gemfile",
+				"Gemfile"
+			],
+			[
+				"rest_user",
+				"app/controllers/rest_users_controller.rb"
+			],
+			[
+				"collectionro",
+				"public/javascripts/controllers/collection_router.js"
+			],
+			[
+				"parse-1.0",
+				"/Users/andrew/hungry/parse/public/downloads/javascript/parse-1.0.20.js"
+			],
+			[
+				"underscore",
+				"public/javascripts/vendor/underscore.js"
+			],
+			[
+				"parse1.0.20",
+				"public/downloads/javascript/parse-1.0.20.js"
+			],
+			[
+				"layout/header",
+				"app/views/layouts/_head.html.erb"
+			],
+			[
+				"application.html",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"routes.rb",
+				"config/routes.rb"
+			],
+			[
+				"collections_con",
+				"app/controllers/collections_controller.rb"
+			],
+			[
+				"apps_help",
+				"app/helpers/apps_helper.rb"
+			],
+			[
+				"menu.html.erb",
+				"app/views/accounts/_menu.html.erb"
+			],
+			[
+				"collection_router",
+				"public/javascripts/controllers/collection_router.js"
+			],
+			[
+				"parse_schema",
+				"public/javascripts/parse_schema.js"
+			],
+			[
+				"style",
+				"assets/themes/the-program/css/style.css"
+			],
+			[
+				"index",
+				"index.md"
+			],
+			[
+				"defa",
+				"_includes/themes/the-program/default.html"
+			],
+			[
+				"css",
+				"assets/themes/the-program/css/style.css"
+			],
+			[
+				"rakefile",
+				"Rakefile"
+			],
+			[
+				"style.css",
+				"assets/themes/the-program/css/style.css"
+			],
+			[
+				"parseobjecttest",
+				"test/parse_object_test.js"
+			],
+			[
+				"grunt",
+				"grunt.js"
+			],
+			[
+				"index.md",
+				"index.md"
+			],
+			[
+				"index.html",
+				"index.html"
+			],
+			[
+				"about.css",
+				"app/assets/stylesheets/about.css.scss"
+			],
+			[
+				"about",
+				"app/views/home/about.html.erb"
+			],
+			[
+				"rest_controll",
+				"app/controllers/rest_classes_controller.rb"
+			],
+			[
+				"data_contr",
+				"app/controllers/data_controller.rb"
+			],
+			[
+				"version",
+				"version_notes.txt"
+			],
+			[
+				"parsemaster",
+				"test/parse_master_test.js"
+			],
+			[
+				"qunit",
+				"qunit.js"
+			],
+			[
+				"about.er",
+				"app/views/home/about.html.erb"
+			],
+			[
+				"home.css",
+				"app/assets/stylesheets/home.css.scss"
+			],
+			[
+				"html",
+				"app/views/home/index.html.erb"
+			],
+			[
+				"scss",
+				"app/assets/stylesheets/home.css.scss"
+			],
+			[
+				"routes",
+				"config/routes.rb"
+			],
+			[
+				"grunt.js",
+				"grunt.js"
+			],
+			[
+				"parse_object_test",
+				"test/parse_object_test.js"
+			],
+			[
+				"parse_object",
+				"test/parse_object_test.js"
+			],
+			[
+				"parse_master",
+				"test/parse_master_test.js"
+			],
+			[
+				"parse_obj",
+				"src/parse_object.js"
+			],
+			[
+				"parse_test",
+				"test/parse_test.js"
+			],
+			[
+				"parse_master_",
+				"test/parse_master_test.js"
+			],
+			[
+				"under",
+				"ext/underscore.js"
+			],
+			[
+				"parse_router_tes",
+				"test/parse_router_test.js"
+			],
+			[
+				"parse_view",
+				"src/parse_view.js"
+			],
+			[
+				"parse_router",
+				"test/parse_router_test.js"
+			],
+			[
+				"parse-1.0.15.js",
+				"build/parse-1.0.15.js"
+			],
+			[
+				"version_note",
+				"version_notes.txt"
+			],
+			[
+				"parse_history",
+				"src/parse_history.js"
+			],
+			[
+				"routeres",
+				"test/parse_router_test.js"
+			],
+			[
+				"read",
+				"README"
+			],
+			[
+				"vers",
+				"version_notes.txt"
+			],
+			[
+				"micropost",
+				"app/models/micropost.rb"
+			],
+			[
+				"collection.rb",
+				"lib/parse/collection.rb"
+			],
+			[
+				"app.rb",
+				"lib/parse/app.rb"
+			],
+			[
+				"data_interfa",
+				"lib/parse/data_interface.rb"
+			],
+			[
+				"collections_controller",
+				"app/controllers/collections_controller.rb"
+			],
+			[
+				"history",
+				"src/parse_history.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 199.0,
+	"status_bar_visible": true
+}
