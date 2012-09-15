@@ -3,7 +3,7 @@
 	[
 		{
 			"path": "/Users/andrew/backbonecast",
-			"folder_exclude_patterns": ["_*"]
+			"folder_exclude_patterns": ["_posts", "_includes", "_posts"]
 		}
 	]
 }
