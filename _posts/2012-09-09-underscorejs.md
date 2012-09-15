@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Underscore.js"
-description: ""
-category: 
 tags: [Underscore]
 ---
 {% include JB/setup %}

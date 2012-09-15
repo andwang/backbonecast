@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "extend"
-category: Underscore.js
-tags: [underscore]
+tags: [Underscore]
 ---
 {% include JB/setup %}
 
