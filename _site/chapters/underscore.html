@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Underscore.js</title>
+	<meta name="author" content="Andrew Wang">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="Underscore.js" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="">Wang on Backbone.js</a></li>
+						<li>Chapters
+							<ol class="chapters">
+							
+ 								<li>
+ 									<a href="/chapters/extend.html">extend</a>
+ 								</li> 							
+ 							
+ 								<li>
+ 									<a href="/chapters/underscore.html">Underscore.js</a>
+ 								</li> 							
+ 							
+ 								<li>
+ 									<a href="/index.html">Learning Backbone.js</a>
+ 								</li> 							
+ 							
+							</ol>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-page">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">Underscore.js</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<p><code>jQuery</code> programmers know that <code>jQuery</code> provides a number of utility functions that make JS programming more productive. These include miscellaneous functions such as <code>isNumeric</code>, which tests if the argument is a number,</p>
+<div class='highlight'><pre><code class='javascript'><span class='nx'>jQuery</span><span class='p'>.</span><span class='nx'>isNumeric</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>);</span> <span class='c1'>// returns true;</span>
+</code></pre>
+</div>
+<p>and iterator functions such as <code>map</code>, <code>each</code>, <code>unique</code>, that take an array or object as input and iterate each of the elements to do something useful:</p>
+<div class='highlight'><pre><code class='javascript'><span class='nx'>$</span><span class='p'>.</span><span class='nx'>map</span><span class='p'>([</span><span class='mi'>1</span><span class='p'>,</span> <span class='mi'>2</span><span class='p'>,</span> <span class='mi'>3</span><span class='p'>],</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>num</span><span class='p'>)</span> <span class='p'>{</span>
+  <span class='k'>return</span> <span class='mi'>10</span> <span class='o'>-</span> <span class='nx'>num</span><span class='p'>;</span>
+<span class='p'>});</span> <span class='c1'>// returns [9, 8, 7]</span>
+</code></pre>
+</div>
+<p>Like <code>jQuery</code>, <code>Underscore.js</code> is a JS utility library.</p>
+
+<h1 id='why_would_anyone_use_'>Why would anyone use <code>Underscore</code>?</h1>
+
+<h3 id='_is_much_more_powerful'><code>Underscore</code> is much more powerful.</h3>
+
+<p><code>jQuery</code> provides few JS utility functions, mostly to support its own DOM manipulation libraries. As a result, many useful utility methods are missing in <code>jQuery</code>.</p>
+
+<p>On the other hand, <code>Underscore</code> is designed to be a complete JS utility toolbox. There are many methods in <code>Underscore</code> that are not in jQuery.</p>
+
+<p>If you are looking for a JS utility function, you should look for it in <code>Underscore</code> before writing your own.</p>
+
+<h3 id='_is_not_a_dom_utility_library'><code>Underscore</code> is not a DOM utility library.</h3>
+
+<p>Unlike <code>jQuery</code>, which provides DOM selection and manipulation methods, <code>Underscore.js</code> is a pure JS utility library that does not help with working with the DOM.</p>
+<div class='highlight'><pre><code class='javascript'>
+</code></pre>
+</div><hr />
+<h1 id='collections'>Collections</h1>
+
+<p>A collection is an array or an object. All of the methods below work on both an array, i.e. <code>[1, 2, 3]</code>, and an object, i.e. <code>{ x: 1, y: 2 }</code>.</p>
+
+<p><em>each</em></p>
+
+<p>The <code>each</code> method iterates over a list and calls the function passed in on each of the element.</p>
+<div class='highlight'><pre><code class='javascript'><span class='nx'>_</span><span class='p'>.</span><span class='nx'>each</span><span class='p'>([</span><span class='s2'>&quot;hello&quot;</span><span class='p'>,</span> <span class='s2'>&quot;world&quot;</span><span class='p'>,</span> <span class='s2'>&quot;peace&quot;</span><span class='p'>],</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>word</span><span class='p'>)</span> <span class='p'>{</span> <span class='nx'>alert</span><span class='p'>(</span><span class='nx'>word</span><span class='p'>);</span> <span class='p'>}</span>
+
+<span class='nx'>_</span><span class='p'>.</span>
+</code></pre>
+</div><hr />
+<h1 id='arrays'>Arrays</h1>
+<hr />
+<h1 id='objects'>Objects</h1>
+<hr />
+<h1 id='functions'>Functions</h1>
+<hr />
+<h1 id='utility'>Utility</h1>
+<hr />
+<h1 id='chaining'>Chaining</h1>
+				</div><!-- entry-content -->
+			</div><!-- bd -->
+
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<img src='/assets/themes/the-program/image/andrew.png'></img>
+					<span class="author fn n">Andrew Wang</span>
+					<div class="author-description">
+						<ul>
+							<li><a href="http://twitter.com/andruwang">@andruwang</a></li>
+							<li>Creator of <a href="http://gonepixel.com">ArtGala</a>,
+							</li>
+							<li>Programmer at <a href="http://parse.com">Parse</a>,</li>
+							<li>Founder of <a href="http://magicanywhere.com">MagicAnywhere</a>.</li>
+						</ul>
+					</div>
+				</div><!-- misc -->
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+	(function(d, s) {
+		var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.src = url; js.id = id;
+		fjs.parentNode.insertBefore(js, fjs);
+		};
+	load('//platform.twitter.com/widgets.js', 'tweetjs');
+	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/chapters/underscore.html" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	}(document, 'script'));
+</script>
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+
