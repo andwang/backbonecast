@@ -70,12 +70,13 @@ task :post do
   end
 end # task :post
 
-# Usage: rake page name="about.html"
+# Usage: rake page name="about.html" order="2"
 # You can also specify a sub-directory path.
 # If you don't specify a file extention we create an index.html at the path specified
 desc "Create a new page."
 task :page do
   name = ENV["name"] || "new-page.md"
+  order = ENV["order"] || 0
   filename = File.join(SOURCE, "#{name}")
   filename = File.join(filename, "index.html") if File.extname(filename) == ""
   title = File.basename(filename, File.extname(filename)).gsub(/[\W\_]/, " ").gsub(/\b\w/){$&.upcase}
@@ -89,7 +90,7 @@ task :page do
     post.puts "---"
     post.puts "layout: page"
     post.puts "title: \"#{title}\""
-    post.puts 'description: ""'
+    post.puts "order: #{order}"
     post.puts "---"
     post.puts "{% include JB/setup %}"
   end

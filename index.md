@@ -1,8 +1,7 @@
 ---
 layout: page
-title: Learning Backbone.js
-tagline: Step-by-step tutorial on Backbone.js
-order: 4
+title: Intro
+order: 0
 ---
 {% include JB/setup %}
 

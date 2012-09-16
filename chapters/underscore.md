@@ -1,8 +1,8 @@
 ---
 layout: page
-title: "Underscore.js"
+title: "Underscore"
 tags: [Underscore]
-order: 2
+order: 1
 ---
 {% include JB/setup %}
 
