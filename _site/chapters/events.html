@@ -30,19 +30,19 @@
  								</li> 							
  							
  								<li>
- 									<a href="/chapters/Underscore.html">Underscore</a>
+ 									<a href="/chapters/underscore.html">Underscore</a>
  								</li> 							
  							
  								<li>
- 									<a href="/chapters/Events.html">Backbone.Events</a>
+ 									<a href="/chapters/events.html">Backbone.Events</a>
  								</li> 							
  							
  								<li>
- 									<a href="/chapters/Model.html">Model</a>
+ 									<a href="/chapters/model.html">Model</a>
  								</li> 							
  							
  								<li>
- 									<a href="/chapters/View.html">View</a>
+ 									<a href="/chapters/view.html">View</a>
  								</li> 							
  							
  								<li>
@@ -101,7 +101,7 @@
 <li><a href='#context'>Context</a></li>
 </ul>
 <hr />
-<h1 id='id818'><a id='namspace'>`Events` is a Namespace</a></h1>
+<h1 id='id842'><a id='namspace'>`Events` is a Namespace</a></h1>
 
 <p>When you come across Backbone&#8217;s <code>Events</code> for the first time, you&#8217;ll notice it is a little different from the other Backbone classes. Unlike <code>Model</code>/<code>Collection</code>/<code>View</code>, <code>Events</code> is plural. More intriguing is the fact that you do not recall any code that directly instantiates or uses Backbone&#8217;s <code>Events</code>.</p>
 
@@ -121,7 +121,7 @@
 </div>
 <p>In particular, there are 3 functions defined in the <code>Events</code> namespace: <code>on</code>, <code>off</code> and <code>trigger</code>, all of which are essential to the operation of Backbone. They are the real <dfn>meat</dfn>, and <code>Events</code> is just the <dfn>container</dfn>. The container is useful, because it prevents the functions from polluting the global namespace.</p>
 
-<h1 id='id819'><a id='mixin'>`Events` is a Mixin</a></h1>
+<h1 id='id843'><a id='mixin'>`Events` is a Mixin</a></h1>
 
 <p>If you don&#8217;t know what a mixin is, here is a good <a href='/chapters/underscore.html#extend'>introduction</a>.</p>
 
@@ -157,7 +157,7 @@
 <span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>off</span><span class='p'>();</span>
 </code></pre>
 </div>
-<h1 id='id820'><a id='methods'>On, Off, and Trigger</a></h1>
+<h1 id='id844'><a id='methods'>On, Off, and Trigger</a></h1>
 
 <p>Once you understand where these methods come from, using <code>on</code>/<code>off</code>/<code>trigger</code> is actually very straightforward.</p>
 
@@ -194,7 +194,7 @@
 </div>
 <p>The second <code>trigger</code> does nothing because there is no longer a callback of the event &#8220;sing&#8221;.</p>
 
-<h1 id='id821'><a id='names'>Event names</a></h1>
+<h1 id='id845'><a id='names'>Event names</a></h1>
 
 <p>You can register as many events on an object as you&#8217;d like. Let&#8217;s say &#8220;andrew&#8221; can sing, rap, hip-hop, and tango. Because singing and rapping are vocal skills, while the other two are dance sills, you want to call the events &#8220;vocal:sing&#8221;, &#8220;vocal:rap&#8221;, &#8220;dance:tango&#8221;, &#8220;dance:hiphop&#8221;.</p>
 <div class='highlight'><pre><code class='javascript'><span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>(</span><span class='s2'>&quot;vocal:sing&quot;</span><span class='p'>,</span> <span class='p'>...);</span>
@@ -215,7 +215,7 @@
 <span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>off</span><span class='p'>();</span>
 </code></pre>
 </div>
-<h1 id='id822'><a id='bind'>`bind` and `unbind`</a></h1>
+<h1 id='id846'><a id='bind'>`bind` and `unbind`</a></h1>
 
 <p>In an older version of Backbone, <code>on</code> was called <code>bind</code> and <code>off</code> was called <code>unbind</code>. The name <code>bind</code> was confusing because underscore.js has a method named <a href='/chapters/underscore.html#bind'><code>bind</code></a> which also deals with functions.</p>
 
@@ -228,7 +228,7 @@
 </div>
 <p>This allowed sloppy coders to continue to use <code>bind</code> for <code>on</code>. Don&#8217;t use <code>bind</code> for <code>on</code>. Don&#8217;t do it. If I see this in your code, I&#8217;ll be like:</p>
 <img src='/assets/rage-why.png' />
-<h1 id='id823'><a id='context'>Context</a></h1>
+<h1 id='id847'><a id='context'>Context</a></h1>
 
 <p>Whenever you pass a function around in JavaScript, the function&#8217;s context will be lost. If you do not know what function context is, make sure you read <a href='/chapters/underscore.html#bind'>this</a> before proceeding.</p>
 
@@ -308,7 +308,7 @@
 		};
 	load('//platform.twitter.com/widgets.js', 'tweetjs');
 	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
-	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/chapters/Events.html" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/chapters/events.html" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
 	}(document, 'script'));
 </script>
 <script>
