@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Backbone.View"
+title: "Backbone Inheritance"
 order: 3.3
 ---
 {% include JB/setup %}

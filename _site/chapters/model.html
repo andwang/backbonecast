@@ -7,10 +7,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Model</title>
+	<title>Backbone.Model</title>
 	<meta name="author" content="Andrew Wang">
 	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
-	<link href="http://feeds.feedburner.com/" rel="alternate" title="Model" type="application/atom+xml">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="Backbone.Model" type="application/atom+xml">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
 </head>
 <body>
@@ -26,6 +26,10 @@
 							<ol class="chapters">
 <!--  							
  								<li>
+ 									<a href="/chapters/collection.html">Backbone.Collection</a>
+ 								</li> 							
+ 							
+ 								<li>
  									<a href="/index.html">Intro</a>
  								</li> 							
  							
@@ -34,15 +38,23 @@
  								</li> 							
  							
  								<li>
+ 									<a href="/chapters/router.html">Backbone.Events</a>
+ 								</li> 							
+ 							
+ 								<li>
  									<a href="/chapters/events.html">Backbone.Events</a>
  								</li> 							
  							
  								<li>
- 									<a href="/chapters/model.html">Model</a>
+ 									<a href="/chapters/model.html">Backbone.Model</a>
  								</li> 							
  							
  								<li>
- 									<a href="/chapters/view.html">View</a>
+ 									<a href="/chapters/inheritance.html">Backbone Inheritance</a>
+ 								</li> 							
+ 							
+ 								<li>
+ 									<a href="/chapters/view.html">Backbone.View</a>
  								</li> 							
  							
  								<li>
@@ -55,8 +67,10 @@
  								<li><a href="javascript: void 0;">Fundamentals</a>
  									<ol>
  										<li><a href="/chapters/events.html">Events</a></li>
- 										<li><a href="/chapters/underscore.html">Model</a></li>
+ 										<li><a href="/chapters/inheritance.html">Inheritance</a></li>
+ 										<li><a href="/chapters/model.html">Model</a></li>
  										<li><a href="/chapters/view.html">View</a></li>
+ 										<li><a href="/chapters/router.html">Router</a></li> 										
  									</ol>
  								</li>
  								<li><a href="/chapters/problems.html">Common Problems</a></li>
@@ -78,14 +92,38 @@
 			<header>
 				<div class="unit-head">
 					<div class="unit-inner unit-head-inner">
-						<h1 class="h2 entry-title">Model</h1>
+						<h1 class="h2 entry-title">Backbone.Model</h1>
 					</div><!-- unit-inner -->
 				</div><!-- unit-head -->
 			</header>
 
 			<div class="bd">
 				<div class="entry-content">
-					
+					<p>{% include JB/setup %}</p>
+
+<p>Chapter Outline</p>
+
+<ul>
+<li><a href='#namespace'><code>View</code> is a namepsace</a></li>
+
+<li><a href='#mixin'><code>Events</code> is a mixin</a></li>
+
+<li><a href='#methods'>on, off and trigger</a></li>
+
+<li><a href='#names'>Event names</a></li>
+
+<li><a href='#bind'><code>bind</code> and <code>unbind</code></a></li>
+
+<li><a href='#context'>Context</a></li>
+</ul>
+<hr />
+<h1 id='id1094'><a id='namspace'>`Events` is a Namespace</a></h1>
+
+<p>When you come across Backbone&#8217;s <code>Events</code> for the first time, you&#8217;ll notice it is a little different from the other Backbone classes. Unlike <code>Model</code>/<code>Collection</code>/<code>View</code>, <code>Events</code> is plural. More intriguing is the fact that you do not recall any code that directly instantiates or uses Backbone&#8217;s <code>Events</code>.</p>
+
+<p>The differences arise from the fact that <code>Events</code> is not a <em>class</em>. Backbone&#8217;s <code>Model</code>, <code>Collection</code>, <code>View</code> and <code>Router</code> are all <em>classes</em>, or <em>constructors</em>. In JavaScript, the way you use a class is to <em>new</em> it up, then call methods on the instance:</p>
+
+<p>{% highlight javascript %} var andrew = new Backbone.Model(); andrew.set(&#8220;gender&#8221;, &#8220;male&#8221;); person.get(&#8220;gender&#8221;);</p>
 				</div><!-- entry-content -->
 			</div><!-- bd -->
 
