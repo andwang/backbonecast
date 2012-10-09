@@ -108,9 +108,14 @@
 					<p>Chapter Outline</p>
 
 <ul>
-<li><a href="#representation"><code>Model</code> represents data</a></li>
+<li><a href="#representation"><code>Model</code> represents data</a>
+
+<ul>
+<li><a href="#defaults"><code>defaults</code></a></li>
+</ul>
+</li>
 <li><a href="#validation"><code>Model</code> validates data</a></li>
-<li> <a href="#persistence"><code>Model</code> persists data</a>
+<li><a href="#persistence"><code>Model</code> persists data</a>
 
 <ul>
 <li><a href="#save"><code>save</code></a></li>
@@ -125,6 +130,8 @@
 
 
 <hr />
+
+<p>Learning is most effective when you practice what you learn. While you read the chapter below, you should try running the code <a href="../apps/playground/playground.html">here</a>. It's just a simple web app where I have set up in a way that you can begin writing <code>Backbone</code> code right away. I have also set up the backends used in my examples so that you can try out the code without setting up a backend yourself.</p>
 
 <h1><a id="representation">Models represent data</a></h1>
 
@@ -157,7 +164,24 @@
 </div>
 
 
-<p>Some of you might be thinking that there is an alternative, more straightforward way of doing the same thing, by using plain old JavaScript objects(POJO):</p>
+<h3><a id="defaults">defaults</a></h3>
+
+<p>You can provide default values for your models:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;gender&#39;</span><span class="o">:</span> <span class="s1">&#39;male&#39;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;gender&#39;</span><span class="p">);</span> <span class="c1">// returns &#39;male&#39;</span>
+</code></pre>
+</div>
+
+
+<p>By default, every instance of the <code>Person</code> model will get all the attributes specified in <code>defaults</code>. This is handy.</p>
+
+<p>Some of you might be thinking that there is an alternative, more straightforward way of representing data, by using plain old JavaScript objects(POJO):</p>
 
 <div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">age</span><span class="o">:</span> <span class="mi">28</span><span class="p">,</span>
@@ -248,7 +272,7 @@
 
 <p>When the ajax call succeeds, the <code>success</code> handler will be called; otherwise, the <code>error</code> handler will be called.</p>
 
-<p><em>Caveat:</em> if you try the code out, you'll find that your requests will be denied. The reason is that my backend needs to see some authentication headers. I'll show you how to add these, but they are unique to the needs of my backend:</p>
+<p><em>Caveat:</em> if you try the code out in the <a href="../apps/playground/playground.html">playground</a>, you'll find that your requests will be denied. The reason is that my backend needs to see some authentication headers. I'll show you how to add these, but they are unique to the needs of my backend:</p>
 
 <div class="highlight"><pre><code class="javascript"><span class="nx">andrew</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
@@ -347,7 +371,7 @@
 
 <p>We've used <code>urlRoot</code> to inform <code>save</code>, <code>fetch</code> and <code>destroy</code> where the data are located on the server. You might be surprised to learn that the ajax requests are not necessarily sent to the same url as <code>urlRoot</code>.</p>
 
-<p>When your <code>Model</code> is saved for the first time, <code>Backbone</code> issues a <code>POST</code> to the collection address, i.e. <code>\Person</code>. Let's say you are making some additional changes after your initial <code>save</code>, and you are calling <code>save</code> again. This time, <code>Backbone</code> will detect your model is not new anymore, because your model has an <code>id</code>, which means it has been saved before. Then, <code>Backbone</code> will issue a <code>PUT</code> to the member address, i.e. <code>\Person\[id]</code>.</p>
+<p>When your <code>Model</code> is saved for the first time, <code>Backbone</code> issues a <code>POST</code> to the collection address, i.e. <code>\Person</code>. Let's say you are making some additional changes after your initial <code>save</code>, and you are calling <code>save</code> again. This time, <code>Backbone</code> will detect your model is not new anymore, because your model has an <code>id</code>. In a typical <code>ReST</code> design, <code>Backbone</code> will send <code>POST</code> for creating an object, and send <code>PUT</code> for modifying an existing object. <code>Backbone</code> respects that design and it will issue a <code>PUT</code> to the member address, i.e. <code>\Person\[id]</code>.</p>
 
 <div class="highlight"><pre><code class="javascript"><span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
 <span class="nx">andrew</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">27</span> <span class="p">},</span> <span class="p">{</span>
@@ -388,7 +412,9 @@
 </div>
 
 
-<p><code>url</code> is frequently confused with <code>urlRoot</code>. The difference between the two is subtle but important. <code>url</code> has the logic of knowing whether to append <code>id</code>, so it should rarely be overwritten and should be treated as a method. Meanwhile, <code>urlRoot</code> should be treated as a property that returns the address of the collection. Note that it's the address of the <em>collection</em>, not the address of the individual element within the collection. In the example, <code>https://api.parse.com</code> is where my server is, and <code>/1/classes/Person</code> is where the <code>Person</code> collection is exposed at. <code>urlRoot</code> is wherever you set up your backend for this <code>Person</code> collection, and it does not have to be <code>https</code>. It can start with <code>http</code>, or it can even be a relative URL like <code>/Person</code>.</p>
+<p><code>url</code> is frequently confused with <code>urlRoot</code>. The difference between the two is subtle but important. <code>url</code> decides at runtime whether to append <code>id</code>, while <code>urlRoot</code> just plainly returns the collection address. Because <code>url</code> is <em>smart</em>, it should rarely be overwritten and should be treated as a method. Meanwhile, because <code>urlRoot</code> is <em>dumb</em>, it should be treated as a property that returns the address of the collection. Note that it's the address of the <em>collection</em>, not the address of the individual element within the collection. In the example, <code>https://api.parse.com</code> is where my server is, and <code>/1/classes/Person</code> is where the <code>Person</code> collection is exposed at.</p>
+
+<p><code>urlRoot</code> is wherever you set up your backend for this <code>Person</code> collection, and it does not have to be <code>https</code>. It can start with <code>http</code>, or it can even be a relative URL like <code>/Person</code>.</p>
 
 <p>Consequently, you should always extend a <code>Model</code> by assigning to its <code>urlRoot</code> property and never to the <code>url</code> method.</p>
 
@@ -408,7 +434,7 @@
 
 <p>The way <code>Backbone</code> deals with <code>url</code> is that it will test <code>url</code>'s type. If it's a function, <code>Backbone</code> will call the function and use the return value as the url; if it's not a function, <code>Backbone</code> will just get its value. In the example above, it will work because <code>Backbone</code> is smart enough to figure out you want to use <code>url</code> as a value.</p>
 
-<p>Why is this bad? Imagine now you need to delete <code>andrew</code> on the server. You call <code>andrew.destroy()</code>. Because <code>url</code> is fixed at <code>/Person</code>, the DELETE will be sent to <code>/Person</code> rather than <code>/Person/[id]</code>. If your backend can handle that, it still works, but it is certainly a violation of Backbone's default mapping, which is the most common ReST design pattern.</p>
+<p>Why is this bad? Imagine now you need to delete <code>andrew</code> on the server. You call <code>andrew.destroy()</code>. Because <code>url</code> is fixed at <code>/Person</code>, <code>DELETE</code> will be sent to <code>/Person</code> rather than <code>/Person/[id]</code>. If your backend can handle that, it still works, but it is certainly a violation of the most common ReST design pattern which is what the default Backbone mapping.</p>
 
 <p>For good sanity, please adopt the following:
 -   Treat <code>url</code> as a method; it should not be overwritten.
@@ -417,6 +443,66 @@
 <p>If possible, you should design your backend according to the mapping above. In the rare event that is not possible, your other option is to change the above mapping in <code>Backbone</code>. <code>Backbone.sync</code> is the method you need to override. We will not go into that in this tutorial.</p>
 
 <h1><a id="events">Events</a></h1>
+
+<p>Let's say we are keeping track of both the <code>yearOfBirth</code> and <code>age</code> of a <code>Person</code> as attributes on the model.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">age</span><span class="o">:</span> <span class="mi">28</span>
+    <span class="nx">yearOfBirth</span><span class="o">:</span> <span class="mi">1983</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+<p>Clearly, the <code>age</code> and <code>yearOfBirth</code> are related; one is a function of the other. It would be great if <code>age</code> automatically updates when <code>yearOfBirth</code> changes, and <code>yearOfBirth</code> automatically changes when <code>age</code> changes.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">andrew</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> 
+
+<span class="c1">// clearly, andrew is born 5 years ago,</span>
+<span class="c1">// but &#39;yearOfBirth&#39; will not automatically update itself</span>
+</code></pre>
+</div>
+
+
+<p>This is where <code>Events</code> come in. Every time an attribute changes in <code>Backbone</code>, an event of the name <code>change:[attr]</code> is triggered. The model can listen to that change event, and run some logic when that happens.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">defaults</span><span class="o">:</span> <span class="p">...,</span>
+  <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;change:age&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">updateYearOfBirth</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="nx">updateYearOfAge</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;yearOfBirth&#39;</span><span class="p">,</span> <span class="mi">2012</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+<p>The above code sets up the model to be observing on the <code>change:age</code> event. When <code>age</code> is changed, the callback <code>updateYearOfBirth</code> is called. And the callback updates the <code>yearOfBirth</code>.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">andrew</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> 
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;yearOfBirth&#39;</span><span class="p">);</span> <span class="c1">// returns 2007</span>
+</code></pre>
+</div>
+
+
+<p>There is a <code>change:[attr]</code> event for every attribute. You can similarly set up the observer for <code>yearOfBirth</code> change, and update <code>age</code> accordingly. This is left as an exercise for the reader. (I've always wanted to say that.)</p>
+
+<p>There is also a catch-all <code>change</code> event that is triggered for any change in any attribute of the model. Other model events of interest include:</p>
+
+<ul>
+<li><code>destroy</code> →  when a model is destroyed.</li>
+<li><code>sync</code> → triggers whenever a model has been successfully synced to the server.</li>
+<li><code>error</code> → when a model's validation fails, or a save call fails on the server.</li>
+<li><code>all</code> → catch-all event for any of the above event, including <code>change</code>.</li>
+</ul>
+
+
+<p>Use <code>on</code> to observe any model event. You can use <code>off</code> to unsubscribe from an event change. Please refer to the <a href="events.html">Events</a> chapter for more details.</p>
 
 				</div><!-- entry-content -->
 			</div><!-- bd -->

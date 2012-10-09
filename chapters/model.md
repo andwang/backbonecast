@@ -8,8 +8,9 @@ order: 3.2
 Chapter Outline
 
 -  [`Model` represents data](#representation)
+    - [`defaults`](#defaults)
 -  [`Model` validates data](#validation)
--    [`Model` persists data](#persistence)
+-  [`Model` persists data](#persistence)
     - [`save`](#save)
     - [`destroy`](#destroy)
     - [`id` and `idAttribute`](#id)
@@ -18,6 +19,9 @@ Chapter Outline
 -  [`Model` triggers events](#events)
 
 ---
+
+Learning is most effective when you practice what you learn. While you read the chapter below, you should try running the code [here](../apps/playground/playground.html). It's just a simple web app where I have set up in a way that you can begin writing `Backbone` code right away. I have also set up the backends used in my examples so that you can try out the code without setting up a backend yourself.
+
 # <a id="representation">Models represent data</a>
 
 If you are writing an app, you need to work with data. To represent and store data, you'll need to create *models*. In a Backbone app, models are created by extending from `Backbone.Model`. Let's say you are creating an app that stores information about people, in particular, their names and ages.
@@ -45,7 +49,23 @@ In Backbone, "age" and "name" are called "attributes". You can get their values 
 alert(andrew.get("andrew")); // 28
 {% endhighlight %}
 
-Some of you might be thinking that there is an alternative, more straightforward way of doing the same thing, by using plain old JavaScript objects(POJO):
+### <a id="defaults">defaults</a>
+
+You can provide default values for your models:
+
+{% highlight javascript %}
+var Person = Backbone.Model.extend({
+  defaults: {
+    'gender': 'male'
+  }
+});
+var andrew = new Person();
+andrew.get('gender'); // returns 'male'
+{% endhighlight %}
+
+By default, every instance of the `Person` model will get all the attributes specified in `defaults`. This is handy.
+
+Some of you might be thinking that there is an alternative, more straightforward way of representing data, by using plain old JavaScript objects(POJO):
 
 {% highlight javascript %}
 var andrew = {
@@ -125,7 +145,7 @@ andrew.save({ 'name': 'Andrew' }, { success: ... });
 
 When the ajax call succeeds, the `success` handler will be called; otherwise, the `error` handler will be called.
 
-*Caveat:* if you try the code out, you'll find that your requests will be denied. The reason is that my backend needs to see some authentication headers. I'll show you how to add these, but they are unique to the needs of my backend:
+*Caveat:* if you try the code out in the [playground](../apps/playground/playground.html), you'll find that your requests will be denied. The reason is that my backend needs to see some authentication headers. I'll show you how to add these, but they are unique to the needs of my backend:
 
 {% highlight javascript %}
 andrew.save(null, {
@@ -217,7 +237,7 @@ People often mistakenly think that after calling `fetch`, the model should be po
 
 We've used `urlRoot` to inform `save`, `fetch` and `destroy` where the data are located on the server. You might be surprised to learn that the ajax requests are not necessarily sent to the same url as `urlRoot`.
 
-When your `Model` is saved for the first time, `Backbone` issues a `POST` to the collection address, i.e. `\Person`. Let's say you are making some additional changes after your initial `save`, and you are calling `save` again. This time, `Backbone` will detect your model is not new anymore, because your model has an `id`, which means it has been saved before. Then, `Backbone` will issue a `PUT` to the member address, i.e. `\Person\[id]`.
+When your `Model` is saved for the first time, `Backbone` issues a `POST` to the collection address, i.e. `\Person`. Let's say you are making some additional changes after your initial `save`, and you are calling `save` again. This time, `Backbone` will detect your model is not new anymore, because your model has an `id`. In a typical `ReST` design, `Backbone` will send `POST` for creating an object, and send `PUT` for modifying an existing object. `Backbone` respects that design and it will issue a `PUT` to the member address, i.e. `\Person\[id]`.
 
 {% highlight javascript %}
 andrew = new Person();
@@ -253,7 +273,9 @@ andrew.save({ age: 27 }, {
 }
 {% endhighlight %}
 
-`url` is frequently confused with `urlRoot`. The difference between the two is subtle but important. `url` has the logic of knowing whether to append `id`, so it should rarely be overwritten and should be treated as a method. Meanwhile, `urlRoot` should be treated as a property that returns the address of the collection. Note that it's the address of the *collection*, not the address of the individual element within the collection. In the example, `https://api.parse.com` is where my server is, and `/1/classes/Person` is where the `Person` collection is exposed at. `urlRoot` is wherever you set up your backend for this `Person` collection, and it does not have to be `https`. It can start with `http`, or it can even be a relative URL like `/Person`.
+`url` is frequently confused with `urlRoot`. The difference between the two is subtle but important. `url` decides at runtime whether to append `id`, while `urlRoot` just plainly returns the collection address. Because `url` is *smart*, it should rarely be overwritten and should be treated as a method. Meanwhile, because `urlRoot` is *dumb*, it should be treated as a property that returns the address of the collection. Note that it's the address of the *collection*, not the address of the individual element within the collection. In the example, `https://api.parse.com` is where my server is, and `/1/classes/Person` is where the `Person` collection is exposed at. 
+
+`urlRoot` is wherever you set up your backend for this `Person` collection, and it does not have to be `https`. It can start with `http`, or it can even be a relative URL like `/Person`.
 
 Consequently, you should always extend a `Model` by assigning to its `urlRoot` property and never to the `url` method.
 
@@ -272,7 +294,7 @@ Will the code work? To a sane person, the above code seems problematic, because 
 
 The way `Backbone` deals with `url` is that it will test `url`'s type. If it's a function, `Backbone` will call the function and use the return value as the url; if it's not a function, `Backbone` will just get its value. In the example above, it will work because `Backbone` is smart enough to figure out you want to use `url` as a value.
 
-Why is this bad? Imagine now you need to delete `andrew` on the server. You call `andrew.destroy()`. Because `url` is fixed at `/Person`, the DELETE will be sent to `/Person` rather than `/Person/[id]`. If your backend can handle that, it still works, but it is certainly a violation of Backbone's default mapping, which is the most common ReST design pattern.
+Why is this bad? Imagine now you need to delete `andrew` on the server. You call `andrew.destroy()`. Because `url` is fixed at `/Person`, `DELETE` will be sent to `/Person` rather than `/Person/[id]`. If your backend can handle that, it still works, but it is certainly a violation of the most common ReST design pattern which is what the default Backbone mapping.
 
 For good sanity, please adopt the following:
 -   Treat `url` as a method; it should not be overwritten.
@@ -282,3 +304,55 @@ If possible, you should design your backend according to the mapping above. In t
 
 # <a id="events">Events</a>
 
+Let's say we are keeping track of both the `yearOfBirth` and `age` of a `Person` as attributes on the model.
+
+{% highlight javascript %}
+var Person = Backbone.Model.extend({
+  defaults: {
+    age: 28
+    yearOfBirth: 1983
+  }
+});
+{% endhighlight %}
+
+Clearly, the `age` and `yearOfBirth` are related; one is a function of the other. It would be great if `age` automatically updates when `yearOfBirth` changes, and `yearOfBirth` automatically changes when `age` changes.
+
+{% highlight javascript %}
+andrew.set('age', 5); 
+
+// clearly, andrew is born 5 years ago,
+// but 'yearOfBirth' will not automatically update itself
+{% endhighlight %}
+
+This is where `Events` come in. Every time an attribute changes in `Backbone`, an event of the name `change:[attr]` is triggered. The model can listen to that change event, and run some logic when that happens.
+
+{% highlight javascript %}
+var Person = Backbone.Model.extend({
+  defaults: ...,
+  initialize: function() {
+    this.on('change:age', this.updateYearOfBirth, this);
+  },
+
+  updateYearOfAge: function() {
+    this.set('yearOfBirth', 2012 - this.get('age'));
+  }
+});
+{% endhighlight %}
+
+The above code sets up the model to be observing on the `change:age` event. When `age` is changed, the callback `updateYearOfBirth` is called. And the callback updates the `yearOfBirth`.
+
+{% highlight javascript %}
+andrew.set('age', 5); 
+andrew.get('yearOfBirth'); // returns 2007
+{% endhighlight %}
+
+There is a `change:[attr]` event for every attribute. You can similarly set up the observer for `yearOfBirth` change, and update `age` accordingly. This is left as an exercise for the reader. (I've always wanted to say that.)
+
+There is also a catch-all `change` event that is triggered for any change in any attribute of the model. Other model events of interest include:
+
+-   `destroy` →  when a model is destroyed.
+-   `sync` → triggers whenever a model has been successfully synced to the server.
+-   `error` → when a model's validation fails, or a save call fails on the server.
+-   `all` → catch-all event for any of the above event, including `change`.
+
+Use `on` to observe any model event. You can use `off` to unsubscribe from an event change. Please refer to the [Events](events.html) chapter for more details.
