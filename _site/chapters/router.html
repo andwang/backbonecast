@@ -68,14 +68,18 @@
  									<ol>
  										<li><a href="/chapters/events.html">Events</a></li>
  										<li><a href="/chapters/model.html">Model</a></li>
- 										<li><a href="/chapters/collection.html">Model</a></li> 										
+ 										<li><a href="/chapters/collection.html">Collection</a></li> 										
  										<li><a href="/chapters/view.html">View</a></li>
  										<li><a href="/chapters/router.html">Router</a></li>
-
-
  									</ol>
  								</li>
- 								<li><a href="/chapters/problems.html">Common Problems</a></li>
+ 								<li><a href="javascript void 0">Advanced</a>
+ 									<ol>
+ 										<li><a href="/chapters/adv_model.html">Model</a></li>
+ 										<li><a href="/chapters/adv_collection.html">Collection</a></li> 										
+ 										<li><a href="/chapters/adv_view.html">View</a></li>
+ 									</ol>
+ 								</li>
  							</ol>
 						</li>
 					</ul>
@@ -104,177 +108,217 @@
 					<p>Chapter Outline</p>
 
 <ul>
-<li><a href='#namespace'><code>Events</code> is a namepsace</a></li>
-
-<li><a href='#mixin'><code>Events</code> is a mixin</a></li>
-
-<li><a href='#methods'>on, off and trigger</a></li>
-
-<li><a href='#names'>Event names</a></li>
-
-<li><a href='#bind'><code>bind</code> and <code>unbind</code></a></li>
-
-<li><a href='#context'>Context</a></li>
+<li><a href="#namespace"><code>Events</code> is a namepsace</a></li>
+<li><a href="#mixin"><code>Events</code> is a mixin</a></li>
+<li><a href="#methods">on, off and trigger</a></li>
+<li><a href="#names">Event names</a></li>
+<li><a href="#bind"><code>bind</code> and <code>unbind</code></a></li>
+<li><a href="#context">Context</a></li>
 </ul>
+
+
 <hr />
-<h1 id='id1140'><a id='namspace'>`Events` is a Namespace</a></h1>
 
-<p>When you come across Backbone&#8217;s <code>Events</code> for the first time, you&#8217;ll notice it is a little different from the other Backbone classes. Unlike <code>Model</code>/<code>Collection</code>/<code>View</code>, <code>Events</code> is plural. More intriguing is the fact that you do not recall any code that directly instantiates or uses Backbone&#8217;s <code>Events</code>.</p>
+<h1><a id="namspace"><code>Events</code> is a Namespace</a></h1>
 
-<p>The differences arise from the fact that <code>Events</code> is not a <em>class</em>. Backbone&#8217;s <code>Model</code>, <code>Collection</code>, <code>View</code> and <code>Router</code> are all <em>classes</em>, or <em>constructors</em>. In JavaScript, the way you use a class is to <em>new</em> it up, then call methods on the instance:</p>
-<div class='highlight'><pre><code class='javascript'><span class='kd'>var</span> <span class='nx'>andrew</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nx'>Backbone</span><span class='p'>.</span><span class='nx'>Model</span><span class='p'>();</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>set</span><span class='p'>(</span><span class='s2'>&quot;gender&quot;</span><span class='p'>,</span> <span class='s2'>&quot;male&quot;</span><span class='p'>);</span>
-<span class='nx'>person</span><span class='p'>.</span><span class='nx'>get</span><span class='p'>(</span><span class='s2'>&quot;gender&quot;</span><span class='p'>);</span>
+<p>When you come across Backbone's <code>Events</code> for the first time, you'll notice it is a little different from the other Backbone classes. Unlike <code>Model</code>/<code>Collection</code>/<code>View</code>, <code>Events</code> is plural. More intriguing is the fact that you do not recall any code that directly instantiates or uses Backbone's <code>Events</code>.</p>
+
+<p>The differences arise from the fact that <code>Events</code> is not a <em>class</em>. Backbone's <code>Model</code>, <code>Collection</code>, <code>View</code> and <code>Router</code> are all <em>classes</em>, or <em>constructors</em>. In JavaScript, the way you use a class is to <em>new</em> it up, then call methods on the instance:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">();</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span> <span class="s2">&quot;male&quot;</span><span class="p">);</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">);</span>
 </code></pre>
 </div>
+
+
 <p><code>Events</code> is not a class, which means that you should never attempt to instantiate it via <em>new</em>. Rather, <code>Events</code> is a <em>namespace</em>, or <em>module</em>, which is simply a JavaScript object:</p>
-<div class='highlight'><pre><code class='javascript'><span class='nx'>Backbone</span><span class='p'>.</span><span class='nx'>Events</span> <span class='o'>=</span> <span class='p'>{</span>
-  <span class='nx'>on</span><span class='o'>:</span> <span class='kd'>function</span><span class='p'>...,</span>
-  <span class='nx'>off</span><span class='o'>:</span> <span class='kd'>function</span><span class='p'>...,</span>
-  <span class='nx'>trigger</span><span class='o'>:</span> <span class='kd'>function</span><span class='p'>...</span>
-<span class='p'>}</span>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">Backbone</span><span class="p">.</span><span class="nx">Events</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">on</span><span class="o">:</span> <span class="kd">function</span><span class="p">...,</span>
+  <span class="nx">off</span><span class="o">:</span> <span class="kd">function</span><span class="p">...,</span>
+  <span class="nx">trigger</span><span class="o">:</span> <span class="kd">function</span><span class="p">...</span>
+<span class="p">}</span>
 </code></pre>
 </div>
+
+
 <p>In particular, there are 3 functions defined in the <code>Events</code> namespace: <code>on</code>, <code>off</code> and <code>trigger</code>, all of which are essential to the operation of Backbone. They are the real <dfn>meat</dfn>, and <code>Events</code> is just the <dfn>container</dfn>. The container is useful, because it prevents the functions from polluting the global namespace.</p>
 
-<h1 id='id1141'><a id='mixin'>`Events` is a Mixin</a></h1>
+<h1><a id="mixin"><code>Events</code> is a Mixin</a></h1>
 
-<p>If you don&#8217;t know what a mixin is, here is a good <a href='/chapters/underscore.html#extend'>introduction</a>.</p>
+<p>If you don't know what a mixin is, here is a good <a href="/chapters/underscore.html#extend">introduction</a>.</p>
 
 <p>Although possible, <code>Events</code> is rarely directly accessed. Instead, <code>Events</code> is mixed into other classes so that the 3 methods, <code>on</code>/<code>off</code>/<code>trigger</code>, are accessible through the classes:</p>
-<div class='highlight'><pre><code class='javascript'><span class='kd'>var</span> <span class='nx'>andrew</span> <span class='o'>=</span> <span class='p'>{</span> <span class='nx'>gender</span><span class='o'>:</span> <span class='s2'>&quot;male&quot;</span> <span class='p'>};</span>
 
-<span class='c1'>// mix Backbone.Events into the person object</span>
-<span class='nx'>_</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>(</span><span class='nx'>andrew</span><span class='p'>,</span> <span class='nx'>Backbone</span><span class='p'>.</span><span class='nx'>Events</span><span class='p'>);</span>
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">gender</span><span class="o">:</span> <span class="s2">&quot;male&quot;</span> <span class="p">};</span>
 
-<span class='c1'>// now you can use any of the methods on the object</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>(</span><span class='s2'>&quot;rap&quot;</span><span class='p'>,</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
-  <span class='nx'>alert</span><span class='p'>(</span><span class='s2'>&quot;booya!&quot;</span><span class='p'>);</span>
-<span class='p'>});</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>trigger</span><span class='p'>(</span><span class='s2'>&quot;rap&quot;</span><span class='p'>);</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>off</span><span class='p'>();</span>
+<span class="c1">// mix Backbone.Events into the person object</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">andrew</span><span class="p">,</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Events</span><span class="p">);</span>
+
+<span class="c1">// now you can use any of the methods on the object</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;rap&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;booya!&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">&quot;rap&quot;</span><span class="p">);</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">off</span><span class="p">();</span>
 </code></pre>
 </div>
+
+
 <p>Notice that <code>on</code>/<code>off</code>/<code>trigger</code> is avaiable on the person object.</p>
 
 <p>In Backbone, <code>Events</code> are mixed into <code>Model</code>/<code>Collection</code>/<code>View</code>/<code>Router</code>:</p>
-<div class='highlight'><pre><code class='javascript'><span class='nx'>_</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>(</span><span class='nx'>Model</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>,</span> <span class='nx'>Events</span> <span class='p'>...);</span>
-<span class='nx'>_</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>(</span><span class='nx'>Collection</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>,</span> <span class='nx'>Events</span> <span class='p'>...);</span>
-<span class='nx'>_</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>(</span><span class='nx'>View</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>,</span> <span class='nx'>Events</span> <span class='p'>...);</span>
-<span class='nx'>_</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>(</span><span class='nx'>Router</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>,</span> <span class='nx'>Events</span> <span class='p'>...);</span>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">Model</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">Events</span> <span class="p">...);</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">Collection</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">Events</span> <span class="p">...);</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">View</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">Events</span> <span class="p">...);</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">Router</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">Events</span> <span class="p">...);</span>
 </code></pre>
 </div>
+
+
 <p>Notice that <code>Events</code> is mixed into the prototypes, so that it is available on every instance of these classes:</p>
-<div class='highlight'><pre><code class='javascript'><span class='kd'>var</span> <span class='nx'>andrew</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nx'>Backbone</span><span class='p'>.</span><span class='nx'>Model</span><span class='p'>();</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>(</span><span class='s2'>&quot;sing&quot;</span><span class='p'>,</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
-  <span class='nx'>alert</span><span class='p'>(</span><span class='s2'>&quot;woolala!&quot;</span><span class='p'>);</span>
-<span class='p'>});</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>trigger</span><span class='p'>(</span><span class='s2'>&quot;sing&quot;</span><span class='p'>);</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>off</span><span class='p'>();</span>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">();</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;sing&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;woolala!&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">&quot;sing&quot;</span><span class="p">);</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">off</span><span class="p">();</span>
 </code></pre>
 </div>
-<h1 id='id1142'><a id='methods'>On, Off, and Trigger</a></h1>
+
+
+<h1><a id="methods">On, Off, and Trigger</a></h1>
 
 <p>Once you understand where these methods come from, using <code>on</code>/<code>off</code>/<code>trigger</code> is actually very straightforward.</p>
 
 <p><code>trigger</code> signals an event has happened.</p>
-<div class='highlight'><pre><code class='javascript'><span class='kd'>var</span> <span class='nx'>andrew</span> <span class='o'>=</span> <span class='p'>{};</span>
-<span class='nx'>_</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>(</span><span class='nx'>andrew</span><span class='p'>,</span> <span class='nx'>Backbone</span><span class='p'>.</span><span class='nx'>Events</span><span class='p'>);</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>trigger</span><span class='p'>(</span><span class='s2'>&quot;sing&quot;</span><span class='p'>);</span> <span class='c1'>// andrew is singing</span>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">andrew</span><span class="p">,</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Events</span><span class="p">);</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">&quot;sing&quot;</span><span class="p">);</span> <span class="c1">// andrew is singing</span>
 </code></pre>
 </div>
-<p>Note that there is nothing special about the event name &#8220;sing&#8221;. The object &#8220;andrew&#8221; has no special knowledge about the string &#8220;sing&#8221;. The event name is just an arbitrary string that you use to mark an event. You can make it &#8220;serenade&#8221;, &#8220;hum&#8221; if you like. Although, if you have heard me sing, you will probably choose an event name such as &#8220;groan&#8221;.</p>
 
-<p>In the example above, when you trigger an event &#8220;sing&#8221;, nothing happens. That is because you did not tell &#8220;andrew&#8221; what to do when the event &#8220;sing&#8221; happens. To register an action that takes place when an event happens, you use &#8220;on&#8221;:</p>
-<div class='highlight'><pre><code class='javascript'><span class='kd'>var</span> <span class='nx'>andrew</span> <span class='o'>=</span> <span class='p'>{};</span>
-<span class='nx'>_</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>(</span><span class='nx'>andrew</span><span class='p'>,</span> <span class='nx'>Backbone</span><span class='p'>.</span><span class='nx'>Events</span><span class='p'>);</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>(</span><span class='s2'>&quot;sing&quot;</span><span class='p'>,</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
-  <span class='nx'>alert</span><span class='p'>(</span><span class='s2'>&quot;woolala&quot;</span><span class='p'>);</span>
-<span class='p'>});</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>trigger</span><span class='p'>(</span><span class='s2'>&quot;sing&quot;</span><span class='p'>);</span>
+
+<p>Note that there is nothing special about the event name "sing". The object "andrew" has no special knowledge about the string "sing". The event name is just an arbitrary string that you use to mark an event. You can make it "serenade", "hum" if you like. Although, if you have heard me sing, you will probably choose an event name such as "groan".</p>
+
+<p>In the example above, when you trigger an event "sing", nothing happens. That is because you did not tell "andrew" what to do when the event "sing" happens. To register an action that takes place when an event happens, you use "on":</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">andrew</span><span class="p">,</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Events</span><span class="p">);</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;sing&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;woolala&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">&quot;sing&quot;</span><span class="p">);</span>
 </code></pre>
 </div>
-<p>Now you&#8217;ll see &#8220;woolala&#8221; shows up as an alert when you trigger the event &#8220;sing&#8221;. Again, nothing is special about the string &#8220;sing&#8221;. When <code>trigger</code> is called, behind the scenes, Backbone looks at all callbacks registered on &#8220;andrew&#8221; and checks if any callback is registered with the event name &#8220;sing&#8221;. If any callback with the event name is found, Backbone invokes it. That&#8217;s it.</p>
 
-<p>At some point in the future, you probably will want to stop listening to a certain event. To do so, use &#8220;off&#8221;, the opposite of &#8220;on&#8221;:</p>
-<div class='highlight'><pre><code class='javascript'><span class='kd'>var</span> <span class='nx'>andrew</span> <span class='o'>=</span> <span class='p'>{};</span>
-<span class='nx'>_</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>(</span><span class='nx'>andrew</span><span class='p'>,</span> <span class='nx'>Backbone</span><span class='p'>.</span><span class='nx'>Events</span><span class='p'>);</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>(</span><span class='s2'>&quot;sing&quot;</span><span class='p'>,</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
-  <span class='nx'>alert</span><span class='p'>(</span><span class='s2'>&quot;woolala&quot;</span><span class='p'>);</span>
-<span class='p'>});</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>trigger</span><span class='p'>(</span><span class='s2'>&quot;sing&quot;</span><span class='p'>);</span> <span class='c1'>// alert shows</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>off</span><span class='p'>(</span><span class='s2'>&quot;sing&quot;</span><span class='p'>);</span>
 
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>trigger</span><span class='p'>(</span><span class='s2'>&quot;sing&quot;</span><span class='p'>);</span> <span class='c1'>// alert does not show</span>
+<p>Now you'll see "woolala" shows up as an alert when you trigger the event "sing". Again, nothing is special about the string "sing". When <code>trigger</code> is called, behind the scenes, Backbone looks at all callbacks registered on "andrew" and checks if any callback is registered with the event name "sing". If any callback with the event name is found, Backbone invokes it. That's it.</p>
+
+<p>At some point in the future, you probably will want to stop listening to a certain event. To do so, use "off", the opposite of "on":</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">andrew</span><span class="p">,</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Events</span><span class="p">);</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;sing&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;woolala&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">&quot;sing&quot;</span><span class="p">);</span> <span class="c1">// alert shows</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="s2">&quot;sing&quot;</span><span class="p">);</span>
+
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">&quot;sing&quot;</span><span class="p">);</span> <span class="c1">// alert does not show</span>
 </code></pre>
 </div>
-<p>The second <code>trigger</code> does nothing because there is no longer a callback of the event &#8220;sing&#8221;.</p>
 
-<h1 id='id1143'><a id='names'>Event names</a></h1>
 
-<p>You can register as many events on an object as you&#8217;d like. Let&#8217;s say &#8220;andrew&#8221; can sing, rap, hip-hop, and tango. Because singing and rapping are vocal skills, while the other two are dance sills, you want to call the events &#8220;vocal:sing&#8221;, &#8220;vocal:rap&#8221;, &#8220;dance:tango&#8221;, &#8220;dance:hiphop&#8221;.</p>
-<div class='highlight'><pre><code class='javascript'><span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>(</span><span class='s2'>&quot;vocal:sing&quot;</span><span class='p'>,</span> <span class='p'>...);</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>(</span><span class='s2'>&quot;vocal:rap&quot;</span><span class='p'>,</span> <span class='p'>...);</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>(</span><span class='s2'>&quot;dance:tango&quot;</span><span class='p'>,</span> <span class='p'>...);</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>(</span><span class='s2'>&quot;dance:hiphop&quot;</span><span class='p'>,</span> <span class='p'>...)</span>
+<p>The second <code>trigger</code> does nothing because there is no longer a callback of the event "sing".</p>
+
+<h1><a id="names">Event names</a></h1>
+
+<p>You can register as many events on an object as you'd like. Let's say "andrew" can sing, rap, hip-hop, and tango. Because singing and rapping are vocal skills, while the other two are dance sills, you want to call the events "vocal:sing", "vocal:rap", "dance:tango", "dance:hiphop".</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">andrew</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;vocal:sing&quot;</span><span class="p">,</span> <span class="p">...);</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;vocal:rap&quot;</span><span class="p">,</span> <span class="p">...);</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;dance:tango&quot;</span><span class="p">,</span> <span class="p">...);</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;dance:hiphop&quot;</span><span class="p">,</span> <span class="p">...)</span>
 </code></pre>
 </div>
-<p>There is nothing special about the colon. It&#8217;s just a character that helps us organize the events into categories. Backbone provides no special support for the colon. It just helps us read.</p>
+
+
+<p>There is nothing special about the colon. It's just a character that helps us organize the events into categories. Backbone provides no special support for the colon. It just helps us read.</p>
 
 <p>Using the colon, however, is the convention for namespacing Backbone events. Do this.</p>
 
 <p>You can turn off individual events by <code>off(eventName)</code>. But if you want to turn off all events registered on an object, use <code>off()</code>, with no event name passed in:</p>
-<div class='highlight'><pre><code class='javascript'><span class='c1'>// turn off &quot;vocal:sing&quot;</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>off</span><span class='p'>(</span><span class='s2'>&quot;vocal:sing&quot;</span><span class='p'>,</span> <span class='p'>...);</span>
 
-<span class='c1'>// turn off all events on andrew</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>off</span><span class='p'>();</span>
+<div class="highlight"><pre><code class="javascript"><span class="c1">// turn off &quot;vocal:sing&quot;</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="s2">&quot;vocal:sing&quot;</span><span class="p">,</span> <span class="p">...);</span>
+
+<span class="c1">// turn off all events on andrew</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">off</span><span class="p">();</span>
 </code></pre>
 </div>
-<h1 id='id1144'><a id='bind'>`bind` and `unbind`</a></h1>
 
-<p>In an older version of Backbone, <code>on</code> was called <code>bind</code> and <code>off</code> was called <code>unbind</code>. The name <code>bind</code> was confusing because underscore.js has a method named <a href='/chapters/underscore.html#bind'><code>bind</code></a> which also deals with functions.</p>
 
-<p>Like underscore.js, jQuery had this exact problem and decided to abandon the name <code>bind</code> for <code>on</code>. Following jQuery&#8217;s lead, Backbone migrated the names too.</p>
+<h1><a id="bind"><code>bind</code> and <code>unbind</code></a></h1>
+
+<p>In an older version of Backbone, <code>on</code> was called <code>bind</code> and <code>off</code> was called <code>unbind</code>. The name <code>bind</code> was confusing because underscore.js has a method named <a href="/chapters/underscore.html#bind"><code>bind</code></a> which also deals with functions.</p>
+
+<p>Like underscore.js, jQuery had this exact problem and decided to abandon the name <code>bind</code> for <code>on</code>. Following jQuery's lead, Backbone migrated the names too.</p>
 
 <p>For back-compatibility, <code>Backbone</code> continues to support these outdated methods as alternative ways of calling <code>on</code> and <code>off</code>.</p>
-<div class='highlight'><pre><code class='javascript'><span class='nx'>Events</span><span class='p'>.</span><span class='nx'>bind</span> <span class='o'>=</span> <span class='nx'>Events</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>;</span>
-<span class='nx'>Events</span><span class='p'>.</span><span class='nx'>unbind</span> <span class='o'>=</span> <span class='nx'>Events</span><span class='p'>.</span><span class='nx'>off</span><span class='p'>;</span>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">Events</span><span class="p">.</span><span class="nx">bind</span> <span class="o">=</span> <span class="nx">Events</span><span class="p">.</span><span class="nx">on</span><span class="p">;</span>
+<span class="nx">Events</span><span class="p">.</span><span class="nx">unbind</span> <span class="o">=</span> <span class="nx">Events</span><span class="p">.</span><span class="nx">off</span><span class="p">;</span>
 </code></pre>
 </div>
-<p>This allowed sloppy coders to continue to use <code>bind</code> for <code>on</code>. Don&#8217;t use <code>bind</code> for <code>on</code>. Don&#8217;t do it. If I see this in your code, I&#8217;ll be like:</p>
-<img src='/assets/rage-why.png' />
-<h1 id='id1145'><a id='context'>Context</a></h1>
 
-<p>Whenever you pass a function around in JavaScript, the function&#8217;s context will be lost. If you do not know what function context is, make sure you read <a href='/chapters/underscore.html#bind'>this</a> before proceeding.</p>
+
+<p>This allowed sloppy coders to continue to use <code>bind</code> for <code>on</code>. Don't use <code>bind</code> for <code>on</code>. Don't do it. If I see this in your code, I'll be like:</p>
+
+<p><img src="/assets/rage-why.png" /></p>
+
+<h1><a id="context">Context</a></h1>
+
+<p>Whenever you pass a function around in JavaScript, the function's context will be lost. If you do not know what function context is, make sure you read <a href="/chapters/underscore.html#bind">this</a> before proceeding.</p>
 
 <p>When you call <code>on</code>, you pass a callback to it, so you need to think about the loss of context.</p>
-<div class='highlight'><pre><code class='javascript'><span class='kd'>var</span> <span class='nx'>andrew</span> <span class='o'>=</span> <span class='p'>{</span>
-    <span class='nx'>name</span><span class='o'>:</span> <span class='s2'>&quot;andrew&quot;</span>
-<span class='p'>};</span>
 
-<span class='kd'>var</span> <span class='nx'>yurika</span> <span class='o'>=</span> <span class='p'>{</span>
-  <span class='nx'>name</span><span class='o'>:</span> <span class='s2'>&quot;yurika&quot;</span><span class='p'>,</span>
-  <span class='nx'>playGame</span><span class='o'>:</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
-    <span class='nx'>alert</span><span class='p'>(</span><span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span> <span class='o'>+</span> <span class='s2'>&quot; loses.&quot;</span><span class='p'>);</span>
-  <span class='p'>}</span>
-<span class='p'>};</span>
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;andrew&quot;</span>
+<span class="p">};</span>
 
-<span class='nx'>_</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>(</span><span class='nx'>andrew</span><span class='p'>,</span> <span class='nx'>Backbone</span><span class='p'>.</span><span class='nx'>Events</span><span class='p'>);</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>(</span><span class='s2'>&quot;play&quot;</span><span class='p'>,</span> <span class='nx'>yurika</span><span class='p'>.</span><span class='nx'>playGame</span><span class='p'>);</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>trigger</span><span class='p'>(</span><span class='s2'>&quot;play&quot;</span><span class='p'>);</span>
+<span class="kd">var</span> <span class="nx">yurika</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;yurika&quot;</span><span class="p">,</span>
+  <span class="nx">playGame</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; loses.&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">andrew</span><span class="p">,</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Events</span><span class="p">);</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;play&quot;</span><span class="p">,</span> <span class="nx">yurika</span><span class="p">.</span><span class="nx">playGame</span><span class="p">);</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">&quot;play&quot;</span><span class="p">);</span>
 </code></pre>
 </div>
-<p>I am really good at playing video games. I don&#8217;t know why, but that is like the only thing I have a natural gift for. My wife Yurika, on the other hand, is less fortunate. When she plays against me, she often losses, hence the inspiration for the code.</p>
 
-<p>What is the outcome of the code? If you understand function context, you know it would be: &#8220;andrew loses.&#8221; Actually, you probably cannot be certain that it&#8217;s &#8220;andrew loses.&#8221; But you know for sure it&#8217;s not going to be &#8220;yurika loses.&#8221;, because the context &#8220;yurika&#8221; is lost by the time the function <code>playGame</code> is invoked.</p>
 
-<p>To preserve the function context, you could have called <code>_.bind(yurika.playGame, yurika)</code> before calling <code>on</code>; had you done this, indeed &#8220;yurika loses&#8221; would be the alert message, and that is what you want. However, there is an easy way to do this:</p>
-<div class='highlight'><pre><code class='javascript'><span class='c1'>// equivalent to calling _.bind first</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>on</span><span class='p'>(</span><span class='s2'>&quot;play&quot;</span><span class='p'>,</span> <span class='nx'>yurika</span><span class='p'>.</span><span class='nx'>playGame</span><span class='p'>,</span> <span class='nx'>yurika</span><span class='p'>);</span>
+<p>I am really good at playing video games. I don't know why, but that is like the only thing I have a natural gift for. My wife Yurika, on the other hand, is less fortunate. When she plays against me, she often losses, hence the inspiration for the code.</p>
+
+<p>What is the outcome of the code? If you understand function context, you know it would be: "andrew loses." Actually, you probably cannot be certain that it's "andrew loses." But you know for sure it's not going to be "yurika loses.", because the context "yurika" is lost by the time the function <code>playGame</code> is invoked.</p>
+
+<p>To preserve the function context, you could have called <code>_.bind(yurika.playGame, yurika)</code> before calling <code>on</code>; had you done this, indeed "yurika loses" would be the alert message, and that is what you want. However, there is an easy way to do this:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="c1">// equivalent to calling _.bind first</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;play&quot;</span><span class="p">,</span> <span class="nx">yurika</span><span class="p">.</span><span class="nx">playGame</span><span class="p">,</span> <span class="nx">yurika</span><span class="p">);</span>
 </code></pre>
 </div>
-<p>When you pass the third parameter to <code>on</code>, Backbone binds it as the context for the callback. When <code>playGame</code> is called, &#8220;yurika&#8221; is used as the context. The world is right again.</p>
+
+
+<p>When you pass the third parameter to <code>on</code>, Backbone binds it as the context for the callback. When <code>playGame</code> is called, "yurika" is used as the context. The world is right again.</p>
+
 				</div><!-- entry-content -->
 			</div><!-- bd -->
 

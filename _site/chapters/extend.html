@@ -68,14 +68,18 @@
  									<ol>
  										<li><a href="/chapters/events.html">Events</a></li>
  										<li><a href="/chapters/model.html">Model</a></li>
- 										<li><a href="/chapters/collection.html">Model</a></li> 										
+ 										<li><a href="/chapters/collection.html">Collection</a></li> 										
  										<li><a href="/chapters/view.html">View</a></li>
  										<li><a href="/chapters/router.html">Router</a></li>
-
-
  									</ol>
  								</li>
- 								<li><a href="/chapters/problems.html">Common Problems</a></li>
+ 								<li><a href="javascript void 0">Advanced</a>
+ 									<ol>
+ 										<li><a href="/chapters/adv_model.html">Model</a></li>
+ 										<li><a href="/chapters/adv_collection.html">Collection</a></li> 										
+ 										<li><a href="/chapters/adv_view.html">View</a></li>
+ 									</ol>
+ 								</li>
  							</ol>
 						</li>
 					</ul>
@@ -101,26 +105,34 @@
 
 			<div class="bd">
 				<div class="entry-content">
-					<div class='highlight'><pre><code class='javascript'><span class='nx'>_</span><span class='p'>.</span><span class='nx'>extend</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>)</span> <span class='p'>{</span>
-  <span class='nx'>each</span><span class='p'>(</span><span class='nx'>slice</span><span class='p'>.</span><span class='nx'>call</span><span class='p'>(</span><span class='nx'>arguments</span><span class='p'>,</span> <span class='mi'>1</span><span class='p'>),</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>source</span><span class='p'>)</span> <span class='p'>{</span>
-    <span class='k'>for</span> <span class='p'>(</span><span class='kd'>var</span> <span class='nx'>prop</span> <span class='k'>in</span> <span class='nx'>source</span><span class='p'>)</span> <span class='p'>{</span>
-      <span class='nx'>obj</span><span class='p'>[</span><span class='nx'>prop</span><span class='p'>]</span> <span class='o'>=</span> <span class='nx'>source</span><span class='p'>[</span><span class='nx'>prop</span><span class='p'>];</span>
-    <span class='p'>}</span>
-  <span class='p'>});</span>
-  <span class='k'>return</span> <span class='nx'>obj</span><span class='p'>;</span>
-<span class='p'>};</span>
+					
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">_</span><span class="p">.</span><span class="nx">extend</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">each</span><span class="p">(</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">source</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">source</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">obj</span><span class="p">[</span><span class="nx">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nx">source</span><span class="p">[</span><span class="nx">prop</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="p">};</span>
 </code></pre>
 </div>
-<p>To anyone who has witten <code>Backbone</code> code, the <code>extend</code> method is familiar. All of your application&#8217;s <code>Model</code>s, <code>View</code>s and <code>Router</code>s are created by extending the corresponding classes of <code>Backbone</code>:</p>
-<div class='highlight'><pre><code class='javascript'><span class='kd'>var</span> <span class='nx'>Person</span> <span class='o'>=</span> <span class='nx'>Backbone</span><span class='p'>.</span><span class='nx'>Model</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>({</span>
-  <span class='nx'>defaults</span><span class='o'>:</span> <span class='p'>{</span>
-    <span class='nx'>firstName</span><span class='o'>:</span> <span class='s1'>&#39;Andrew&#39;</span><span class='p'>,</span>
-    <span class='nx'>lastName</span><span class='o'>:</span> <span class='s1'>&#39;Wang&#39;</span>
-  <span class='p'>}</span>
-<span class='p'>});</span>
+
+
+<p>To anyone who has witten <code>Backbone</code> code, the <code>extend</code> method is familiar. All of your application's <code>Model</code>s, <code>View</code>s and <code>Router</code>s are created by extending the corresponding classes of <code>Backbone</code>:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">firstName</span><span class="o">:</span> <span class="s1">&#39;Andrew&#39;</span><span class="p">,</span>
+    <span class="nx">lastName</span><span class="o">:</span> <span class="s1">&#39;Wang&#39;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
 </div>
+
+
 <p>Conceptually, <code>extend</code> simply copies all the properties of the class</p>
+
 				</div><!-- entry-content -->
 			</div><!-- bd -->
 

@@ -68,14 +68,18 @@
  									<ol>
  										<li><a href="/chapters/events.html">Events</a></li>
  										<li><a href="/chapters/model.html">Model</a></li>
- 										<li><a href="/chapters/collection.html">Model</a></li> 										
+ 										<li><a href="/chapters/collection.html">Collection</a></li> 										
  										<li><a href="/chapters/view.html">View</a></li>
  										<li><a href="/chapters/router.html">Router</a></li>
-
-
  									</ol>
  								</li>
- 								<li><a href="/chapters/problems.html">Common Problems</a></li>
+ 								<li><a href="javascript void 0">Advanced</a>
+ 									<ol>
+ 										<li><a href="/chapters/adv_model.html">Model</a></li>
+ 										<li><a href="/chapters/adv_collection.html">Collection</a></li> 										
+ 										<li><a href="/chapters/adv_view.html">View</a></li>
+ 									</ol>
+ 								</li>
  							</ol>
 						</li>
 					</ul>
@@ -101,31 +105,319 @@
 
 			<div class="bd">
 				<div class="entry-content">
-					<p>{% include JB/setup %}</p>
-
-<p>Chapter Outline</p>
+					<p>Chapter Outline</p>
 
 <ul>
-<li><a href='#namespace'><code>View</code> is a namepsace</a></li>
+<li><a href="#representation"><code>Model</code> represents data</a></li>
+<li><a href="#validation"><code>Model</code> validates data</a></li>
+<li> <a href="#persistence"><code>Model</code> persists data</a>
 
-<li><a href='#mixin'><code>Events</code> is a mixin</a></li>
-
-<li><a href='#methods'>on, off and trigger</a></li>
-
-<li><a href='#names'>Event names</a></li>
-
-<li><a href='#bind'><code>bind</code> and <code>unbind</code></a></li>
-
-<li><a href='#context'>Context</a></li>
+<ul>
+<li><a href="#save"><code>save</code></a></li>
+<li><a href="#destroy"><code>destroy</code></a></li>
+<li><a href="#id"><code>id</code> and <code>idAttribute</code></a></li>
+<li><a href="#fetch"><code>fetch</code></a></li>
+<li><a href="#url"><code>url</code> and <code>urlRoot</code></a></li>
 </ul>
+</li>
+<li><a href="#events"><code>Model</code> triggers events</a></li>
+</ul>
+
+
 <hr />
-<h1 id='id1139'><a id='namspace'>Inheritance</a></h1>
 
-<p>When you come across Backbone&#8217;s <code>Events</code> for the first time, you&#8217;ll notice it is a little different from the other Backbone classes. Unlike <code>Model</code>/<code>Collection</code>/<code>View</code>, <code>Events</code> is plural. More intriguing is the fact that you do not recall any code that directly instantiates or uses Backbone&#8217;s <code>Events</code>.</p>
+<h1><a id="representation">Models represent data</a></h1>
 
-<p>The differences arise from the fact that <code>Events</code> is not a <em>class</em>. Backbone&#8217;s <code>Model</code>, <code>Collection</code>, <code>View</code> and <code>Router</code> are all <em>classes</em>, or <em>constructors</em>. In JavaScript, the way you use a class is to <em>new</em> it up, then call methods on the instance:</p>
+<p>If you are writing an app, you need to work with data. To represent and store data, you'll need to create <em>models</em>. In a Backbone app, models are created by extending from <code>Backbone.Model</code>. Let's say you are creating an app that stores information about people, in particular, their names and ages.</p>
 
-<p>{% highlight javascript %} var andrew = new Backbone.Model(); andrew.set(&#8220;gender&#8221;, &#8220;male&#8221;); person.get(&#8220;gender&#8221;);</p>
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">();</span>
+</code></pre>
+</div>
+
+
+<p>You can then proceed to use the model by <em>instantiating</em> it, or <em>newing</em> it up:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+</code></pre>
+</div>
+
+
+<p>Then you can store information on each instance by setting and getting data from andrew:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">andrew</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="mi">28</span><span class="p">);</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;Andrew&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+
+<p>In Backbone, "age" and "name" are called "attributes". You can get their values by calling <code>get</code>:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">alert</span><span class="p">(</span><span class="nx">andrew</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;andrew&quot;</span><span class="p">));</span> <span class="c1">// 28</span>
+</code></pre>
+</div>
+
+
+<p>Some of you might be thinking that there is an alternative, more straightforward way of doing the same thing, by using plain old JavaScript objects(POJO):</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">age</span><span class="o">:</span> <span class="mi">28</span><span class="p">,</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Andrew&quot;</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+
+<p>So what's the point of using <code>Backbone.Model</code>? There are 3 advantages over the traditional approach:</p>
+
+<ul>
+<li>validation</li>
+<li>persistence</li>
+<li>events</li>
+</ul>
+
+
+<h1><a id="validation">Models validate data</a></h1>
+
+<p>I may one day make the following mistake:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">andrew</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;28&quot;</span><span class="p">);</span> <span class="c1">// &quot;28&quot; is a string</span>
+</code></pre>
+</div>
+
+
+<p>This is bad and I want to prevent people from using strings to store age. This is where <code>Model</code> validation comes in:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">validate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">_</span><span class="p">.</span><span class="nx">isUndefined</span><span class="p">(</span><span class="nx">attrs</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">_</span><span class="p">.</span><span class="nx">isNumber</span><span class="p">(</span><span class="nx">attrs</span><span class="p">.</span><span class="nx">age</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s2">&quot;age must be a number.&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;28&quot;</span><span class="p">);</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">andrew</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">));</span> <span class="c1">// returns &#39;undefined&#39;</span>
+</code></pre>
+</div>
+
+
+<p>The <code>Model</code>'s <code>validate</code> is run before each <code>set</code>. If the data are valid, you don't need to return any value in <code>validate</code>; but you should return an <em>error</em> if the attributes contain any invalid info, which prevents <code>set</code> from completing. The <em>error</em> can be any string or object.</p>
+
+<h1><a id="persistence">Models persist data</a></h1>
+
+<p>In order to use data across sessions, you need to persist your data to your backend. Usually this involves:</p>
+
+<ol>
+<li>set up a database,</li>
+<li>expose a ReST API for your data,</li>
+<li>write client logic to communicate with the ReST API.</li>
+</ol>
+
+
+<p><code>Backbone</code> does not solve any of your backend problems; <code>Backbone</code> does not simplify 1) and 2). You still need to set up a database and a web data access API. However, <code>Backbone</code> simplifies 3).</p>
+
+<p>To save a model, all you need is to tell where the model is saved (via <code>urlRoot</code> or <code>url</code>) and call <code>save</code>:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">urlRoot</span><span class="o">:</span> <span class="s1">&#39;https://api.parse.com/1/classes/Person&#39;</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">({</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span><span class="s1">&#39;Andrew&#39;</span> <span class="p">});</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span>   
+  <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;success&#39;</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;failure&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+<h3><a id="save">save</a></h3>
+
+<p>The first argument to <code>save</code> are the <em>additional</em> attributes to set before the ajax call is made. I said <em>additional</em>, because they are in <em>addition</em> to the attributes already set. In my example, the first argument to <code>save</code> is <code>null</code>, because I've already set all the attributes before calling <code>save</code>. But the following code would be equivalent:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Andrew&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">success</span><span class="o">:</span> <span class="p">...</span> <span class="p">});</span>
+</code></pre>
+</div>
+
+
+<p>When the ajax call succeeds, the <code>success</code> handler will be called; otherwise, the <code>error</code> handler will be called.</p>
+
+<p><em>Caveat:</em> if you try the code out, you'll find that your requests will be denied. The reason is that my backend needs to see some authentication headers. I'll show you how to add these, but they are unique to the needs of my backend:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">andrew</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;X-Parse-Application-Id&#39;</span><span class="o">:</span> <span class="s1">&#39;60sUVK8j2f3IVU8Ex5cD1tqz9q6wdJFz0QBBjSWm&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;X-Parse-REST-API-Key&#39;</span><span class="o">:</span> <span class="s1">&#39;GfUacynAXXbpzS6ciF8nc8cf0I9cgisKPWCr0WUA&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">success</span><span class="o">:</span> <span class="p">...,</span> <span class="nx">failure</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+<p>The headers are only important if you want to try out the code with the backend I set up. In your own backend, likely you'll need something similar, to ensure that the requests come from an authenticated source. It's not the intention of this tutorial to show you how to set up your backend, so let's just ignore them in our discussion.</p>
+
+<h3><a id="id"><code>id</code> and <code>idAttribute</code></a></h3>
+
+<p>When a <code>Backbone</code> <code>Model</code> is persisted on the server for the first time, the server assigns an <code>id</code> to the instance.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Andrew&#39;</span> <span class="p">});</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">andrew</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// returns `undefined`</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">andrew</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// returns some string</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="c1">// Don&#39;t try the code above yet; it does not yet work.</span>
+</code></pre>
+</div>
+
+
+<p>What is this <code>id</code> attribute and why is it needed?</p>
+
+<p>The <code>id</code> attribute is important because the server needs to understand how the instance you just saved maps to an instance in the database. Without <code>id</code>, it is impossible for the client to uniquely identify the instance on the server. The client cannot simply use the name, e.g. <code>Andrew</code>, to identify the person because there could be more than one <code>Person</code> in the database that is named <code>Andrew</code>.</p>
+
+<p>The client gets its <code>id</code> from the server's response. This is an requirement on the implementation of your server: the response to <code>save</code> needs to contain <code>{ id: "..." }</code>. The <code>id</code> can be any string, as long it uniquely identifies a database entry on your server.</p>
+
+<p>All database tables have some kind of primary key that acts as <code>id</code>, but it may or may not be called as <code>id</code>. For mongodb, it's called <code>_id</code>, and for sqlite it's <code>rowid</code>. It would be great if Backbone provides a mapping mechanism so that the server can just return what is natural, e.g. <code>_id</code> or <code>rowid</code>, and the client maps it to <code>id</code>.</p>
+
+<p>And there is. This is the <code>idAttribute</code> property on the <code>Model</code>. My database collection uses <code>objectId</code> and I want Backbone maps it to <code>id</code>:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">urlRoot</span><span class="o">:</span> <span class="s1">&#39;https://api.parse.com/1/classes/Person&#39;</span><span class="p">,</span>
+  <span class="nx">idAttribute</span><span class="o">:</span> <span class="s1">&#39;objectId&#39;</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">({</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span><span class="s1">&#39;Andrew&#39;</span> <span class="p">});</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span>   
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">...,</span>
+  <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">andrew</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+<p>Now this should work. Basically, <code>idAttribute</code> allows the server response to omit <code>id</code>, as long as it contain an <code>id</code> equivalence, as specified by <code>idAttribute</code>.</p>
+
+<h3><a id="destroy">destroy</a></h3>
+
+<p>calling <code>destroy</code> on a model deletes it from the server.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">andrew</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+</code></pre>
+</div>
+
+
+<h3><a id="fetch">fetch</a></h3>
+
+<p>Once your data are saved, you can read them back later. To accomplish this, you use <code>fetch</code>:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">someone</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">({</span> <span class="nx">objectId</span><span class="o">:</span> <span class="nx">andrew</span><span class="p">.</span><span class="nx">id</span> <span class="p">});</span>
+<span class="nx">someone</span><span class="p">.</span><span class="nx">fetch</span><span class="p">({</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">...,</span>
+  <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">someone</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">));</span> <span class="c1">// returns 28</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+<p>Normally, you would use <code>id</code>, rather than <code>objectId</code>, but my backend requires <code>objectId</code>.</p>
+
+<p>One common mistake with <code>fetch</code> is that people forget that it is asynchronous:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">someone</span><span class="p">.</span><span class="nx">fetch</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">someone</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">));</span> <span class="c1">// return undefined</span>
+</code></pre>
+</div>
+
+
+<p>People often mistakenly think that after calling <code>fetch</code>, the model should be populated with data; in reality, due to the asynchronous nature of JavaScript, you can only make the assumption within <code>fetch</code>'s <code>success</code> callback.</p>
+
+<h3><a id="url"><code>url</code> and <code>urlRoot</code></a></h3>
+
+<p>We've used <code>urlRoot</code> to inform <code>save</code>, <code>fetch</code> and <code>destroy</code> where the data are located on the server. You might be surprised to learn that the ajax requests are not necessarily sent to the same url as <code>urlRoot</code>.</p>
+
+<p>When your <code>Model</code> is saved for the first time, <code>Backbone</code> issues a <code>POST</code> to the collection address, i.e. <code>\Person</code>. Let's say you are making some additional changes after your initial <code>save</code>, and you are calling <code>save</code> again. This time, <code>Backbone</code> will detect your model is not new anymore, because your model has an <code>id</code>, which means it has been saved before. Then, <code>Backbone</code> will issue a <code>PUT</code> to the member address, i.e. <code>\Person\[id]</code>.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">27</span> <span class="p">},</span> <span class="p">{</span>
+  <span class="c1">// first save: POST to /Person</span>
+  <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">andrew</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">28</span> <span class="p">});</span>
+    <span class="c1">// second save: PUT to /Person/[id]</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+<p>Similarly, <code>fetch</code> would issue GET calls to /Person/[id], and <code>destroy</code> would issue DELETE calls to /Person/[id].</p>
+
+<p>In summary, this is how <code>Backbone</code> model CRUD operations map to ajax request:</p>
+
+<ul>
+<li>create → POST   /collection</li>
+<li>read → GET   /collection/id</li>
+<li>update → PUT   /collection/id</li>
+<li>delete → DELETE   /collection/id</li>
+</ul>
+
+
+<p>The mapping can also be remembered as follows. If your model is new, i.e. has not been saved before,  the only operation you can do is to CREATE. So when a model is new, its <code>url</code> is /collection. Otherwise, if a model has been persisted already, the only operations you can do are GET, PUT, and DELETE, so its <code>url</code> is /collection/id. This logic is encapsulated in the <code>url</code> method on <code>Backbone</code> <code>Model</code>.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">andrew</span><span class="p">.</span><span class="nx">url</span><span class="p">());</span> 
+<span class="c1">// returns /Person because the model is new</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">27</span> <span class="p">},</span> <span class="p">{</span> 
+  <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">andrew</span><span class="p">.</span><span class="nx">url</span><span class="p">());</span>
+    <span class="c1">// return /Person/[id] because the model is not new</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+
+<p><code>url</code> is frequently confused with <code>urlRoot</code>. The difference between the two is subtle but important. <code>url</code> has the logic of knowing whether to append <code>id</code>, so it should rarely be overwritten and should be treated as a method. Meanwhile, <code>urlRoot</code> should be treated as a property that returns the address of the collection. Note that it's the address of the <em>collection</em>, not the address of the individual element within the collection. In the example, <code>https://api.parse.com</code> is where my server is, and <code>/1/classes/Person</code> is where the <code>Person</code> collection is exposed at. <code>urlRoot</code> is wherever you set up your backend for this <code>Person</code> collection, and it does not have to be <code>https</code>. It can start with <code>http</code>, or it can even be a relative URL like <code>/Person</code>.</p>
+
+<p>Consequently, you should always extend a <code>Model</code> by assigning to its <code>urlRoot</code> property and never to the <code>url</code> method.</p>
+
+<p><code>Backbone</code> is not opinionated on the difference between <code>urlRoot</code> and <code>url</code>, and that has caused much confusion. <code>Backbone</code> will tolerate code that uses <code>urlRoot</code> and <code>url</code> interchangably:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;/Person&quot;</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span>
+</code></pre>
+</div>
+
+
+<p>Will the code work? To a sane person, the above code seems problematic, because <code>url</code> is not a method, i.e. <code>function() { return '/Person'; }</code>. But it works, and it will actually persist <code>andrew</code> to the server. How?</p>
+
+<p>The way <code>Backbone</code> deals with <code>url</code> is that it will test <code>url</code>'s type. If it's a function, <code>Backbone</code> will call the function and use the return value as the url; if it's not a function, <code>Backbone</code> will just get its value. In the example above, it will work because <code>Backbone</code> is smart enough to figure out you want to use <code>url</code> as a value.</p>
+
+<p>Why is this bad? Imagine now you need to delete <code>andrew</code> on the server. You call <code>andrew.destroy()</code>. Because <code>url</code> is fixed at <code>/Person</code>, the DELETE will be sent to <code>/Person</code> rather than <code>/Person/[id]</code>. If your backend can handle that, it still works, but it is certainly a violation of Backbone's default mapping, which is the most common ReST design pattern.</p>
+
+<p>For good sanity, please adopt the following:
+-   Treat <code>url</code> as a method; it should not be overwritten.
+-   Treat <code>urlRoot</code> as an attribute; when used outside of <code>Collection</code>, it should always be overwritten.</p>
+
+<p>If possible, you should design your backend according to the mapping above. In the rare event that is not possible, your other option is to change the above mapping in <code>Backbone</code>. <code>Backbone.sync</code> is the method you need to override. We will not go into that in this tutorial.</p>
+
+<h1><a id="events">Events</a></h1>
+
 				</div><!-- entry-content -->
 			</div><!-- bd -->
 

@@ -68,14 +68,18 @@
  									<ol>
  										<li><a href="/chapters/events.html">Events</a></li>
  										<li><a href="/chapters/model.html">Model</a></li>
- 										<li><a href="/chapters/collection.html">Model</a></li> 										
+ 										<li><a href="/chapters/collection.html">Collection</a></li> 										
  										<li><a href="/chapters/view.html">View</a></li>
  										<li><a href="/chapters/router.html">Router</a></li>
-
-
  									</ol>
  								</li>
- 								<li><a href="/chapters/problems.html">Common Problems</a></li>
+ 								<li><a href="javascript void 0">Advanced</a>
+ 									<ol>
+ 										<li><a href="/chapters/adv_model.html">Model</a></li>
+ 										<li><a href="/chapters/adv_collection.html">Collection</a></li> 										
+ 										<li><a href="/chapters/adv_view.html">View</a></li>
+ 									</ol>
+ 								</li>
  							</ol>
 						</li>
 					</ul>
@@ -101,25 +105,39 @@
 
 			<div class="bd">
 				<div class="entry-content">
-					<p>At my friend <a href='http://bklimt.com/'>Bryan Klimt</a>&#8217;s urging, I decided to write a tutorial on Backbone.js.</p>
+					<p>At my friend <a href="http://bklimt.com/">Bryan Klimt</a>'s urging, I decided to write a tutorial on Backbone.js.</p>
 
 <p>About one year ago when I began writing my first <code>Backbone.js</code> app, I found the framework challenging to learn. It is different from any of the other UI framework I used, and at times I was not sure whether I was using it right. As any developer would do under the situation, I looked around for a tutorial or a book.</p>
 
 <p>A quick google search revealed that there was no shortage of information available on <code>Backbone.js</code>. A few hours into my reading, however, I discovered that most tutorials were not very good. There are a few common problems that plagued the tutorials on the subject:</p>
 
-<h3 id='they_skip_over_the_basics'>They skip over the basics.</h3>
+<h3>They don't explain well.</h3>
 
-<p><code>Backbone.js</code> has 6 fundamental classes, including <code>Model</code>, <code>Collection</code>, <code>View</code>, <code>Router</code>, <code>History</code> and <code>Event</code>. Few tutorials talk about how to use <code>Event</code> or <code>History</code>. Instead, these classes are just used in the code samples as if they have been introduced before.</p>
+<p>If you are new to Backbone, you'll find that most "tutorials" on Backbone are just a medley of "hello, world" applications. There is little explanation on the basic concepts such as <code>el</code> or <code>Events</code>.</p>
 
-<h3 id='they_dont_go_into_enough_depth'>They don&#8217;t go into enough depth.</h3>
+<h3>They are out of date.</h3>
 
-<p>There are a number of advanced concepts in <code>Backbone.js</code>. For example, how should a router communicate with a view? How do views communicate with each other when only transient states changed? Should we not use the anchor href attribute and let the router take care of all routing? There are so many questions I had with no answer to.</p>
+<p>Like any framework, <code>Backbone</code> has evolved a lot since its birth. Most tutorials do not keep track of these changes, and continue to propagate bad practices that earlier versions tolerated.</p>
 
-<h3 id='most_importantly_they_dont_explain_well'>Most importantly, they don&#8217;t explain well.</h3>
+<p>For example, in earlier version of <code>Backbone</code>, it was OK to assign either the wrapped or unwrapped DOM element to <code>el</code>. Later, however, <code>$el</code> is introduced to eliminate the ambiguity. However, most tutorials continue to assign the wrapped element to <code>el</code>, to most beginners' confusion.</p>
 
-<p>Most tutorials are just thrown-together pieces of code using Backbone. There is little explanation on the reasoning behind the design. Why did the author choose to write it this way rather than the other way? What makes a design choice good? The explanation is scanty or poor.</p>
+<h3>They don't talk about the advanced concepts.</h3>
 
-<p>This book is my attempt to teach <code>Backbone</code> in a thorough and intelligible way.</p>
+<p>There are a number of common questions all <code>Backbone</code> developers come across.
+-   How do views communicate with each other?
+-   How do views update based on changes in transient states?
+-   How to dispose a view to prevent memory leak?
+-   How to call the parent class' implementation in the child?
+-   How to deal with model inheritance in <code>Collection</code>?</p>
+
+<p>Most tutorials do not delve into this level of complexity.</p>
+
+<h3>They are not sufficiently opinionated.</h3>
+
+<p><code>Backbone</code> is not an opinionated framework. It is easy to come up with multiple solutions to the same problem. However, not all solutions are created equal; some are unquestionably superior. Most tutorials do not consider various approaches and simply identify one solution. Often, the one chosen is sub-optimal.</p>
+
+<p>This book is my attempt to create a <code>Backbone</code> tutorial that I always wanted.</p>
+
 				</div><!-- entry-content -->
 			</div><!-- bd -->
 

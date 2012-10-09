@@ -440,6 +440,7 @@ h3,
   line-height: 26px;
   margin-top: 26px;
   margin-bottom: 26px;
+  color: gray;
 }
 h4,
 .h4 {
@@ -539,6 +540,10 @@ No styleguide reference.
 }
 .list-linear li:last-child {
   margin-right: 0;
+}
+
+.highlight {
+  font-size: 0.8em;
 }
 /* LESS VARIABLES
 --------------------------------------------------------------------------------- */
@@ -688,11 +693,17 @@ pre {
   padding-left: 0;
 }
 .unit-article ul {
-  list-style: circle inside;
+  list-style: square inside;
 }
 .unit-article ol {
-  list-style: lower-greek inside;
+  list-style: decimal inside;
 }
+.unit-article ul li ul {
+  list-style: circle inside;
+  margin-left: 30px;
+  margin-bottom: 0px;
+} 
+
 .unit-article li h1,
 .unit-article dt h1,
 .unit-article dd h1,

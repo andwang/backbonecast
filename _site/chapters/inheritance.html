@@ -68,14 +68,18 @@
  									<ol>
  										<li><a href="/chapters/events.html">Events</a></li>
  										<li><a href="/chapters/model.html">Model</a></li>
- 										<li><a href="/chapters/collection.html">Model</a></li> 										
+ 										<li><a href="/chapters/collection.html">Collection</a></li> 										
  										<li><a href="/chapters/view.html">View</a></li>
  										<li><a href="/chapters/router.html">Router</a></li>
-
-
  									</ol>
  								</li>
- 								<li><a href="/chapters/problems.html">Common Problems</a></li>
+ 								<li><a href="javascript void 0">Advanced</a>
+ 									<ol>
+ 										<li><a href="/chapters/adv_model.html">Model</a></li>
+ 										<li><a href="/chapters/adv_collection.html">Collection</a></li> 										
+ 										<li><a href="/chapters/adv_view.html">View</a></li>
+ 									</ol>
+ 								</li>
  							</ol>
 						</li>
 					</ul>
@@ -104,29 +108,32 @@
 					<p>Chapter Outline</p>
 
 <ul>
-<li><a href='#namespace'><code>Events</code> is a namepsace</a></li>
-
-<li><a href='#mixin'><code>Events</code> is a mixin</a></li>
-
-<li><a href='#methods'>on, off and trigger</a></li>
-
-<li><a href='#names'>Event names</a></li>
-
-<li><a href='#bind'><code>bind</code> and <code>unbind</code></a></li>
-
-<li><a href='#context'>Context</a></li>
+<li><a href="#namespace"><code>Events</code> is a namepsace</a></li>
+<li><a href="#mixin"><code>Events</code> is a mixin</a></li>
+<li><a href="#methods">on, off and trigger</a></li>
+<li><a href="#names">Event names</a></li>
+<li><a href="#bind"><code>bind</code> and <code>unbind</code></a></li>
+<li><a href="#context">Context</a></li>
 </ul>
+
+
 <hr />
-<h1 id='id1138'><a id='namspace'>`Events` is a Namespace</a></h1>
 
-<p>When you come across Backbone&#8217;s <code>Events</code> for the first time, you&#8217;ll notice it is a little different from the other Backbone classes. Unlike <code>Model</code>/<code>Collection</code>/<code>View</code>, <code>Events</code> is plural. More intriguing is the fact that you do not recall any code that directly instantiates or uses Backbone&#8217;s <code>Events</code>.</p>
+<h1><a id="namspace"><code>Events</code> is a Namespace</a></h1>
 
-<p>The differences arise from the fact that <code>Events</code> is not a <em>class</em>. Backbone&#8217;s <code>Model</code>, <code>Collection</code>, <code>View</code> and <code>Router</code> are all <em>classes</em>, or <em>constructors</em>. In JavaScript, the way you use a class is to <em>new</em> it up, then call methods on the instance:</p>
-<div class='highlight'><pre><code class='javascript'><span class='kd'>var</span> <span class='nx'>andrew</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nx'>Backbone</span><span class='p'>.</span><span class='nx'>Model</span><span class='p'>();</span>
-<span class='nx'>andrew</span><span class='p'>.</span><span class='nx'>set</span><span class='p'>(</span><span class='s2'>&quot;gender&quot;</span><span class='p'>,</span> <span class='s2'>&quot;male&quot;</span><span class='p'>);</span>
-<span class='nx'>person</span><span class='p'>.</span><span class='nx'>get</span><span class='p'>(</span><span class='s2'>&quot;gender&quot;</span><span class='p'>);</span>
+<p>When you come across Backbone's <code>Events</code> for the first time, you'll notice it is a little different from the other Backbone classes. Unlike <code>Model</code>/<code>Collection</code>/<code>View</code>, <code>Events</code> is plural. More intriguing is the fact that you do not recall any code that directly instantiates or uses Backbone's <code>Events</code>.</p>
+
+<p>The differences arise from the fact that <code>Events</code> is not a <em>class</em>. Backbone's <code>Model</code>, <code>Collection</code>, <code>View</code> and <code>Router</code> are all <em>classes</em>, or <em>constructors</em>. In JavaScript, the way you use a class is to <em>new</em> it up, then call methods on the instance:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">();</span>
+<span class="nx">andrew</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span> <span class="s2">&quot;male&quot;</span><span class="p">);</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">);</span>
 </code></pre>
 </div>
+
+
+
+
 				</div><!-- entry-content -->
 			</div><!-- bd -->
 
