@@ -119,15 +119,48 @@
 
 <hr />
 
-<h1><a id="namspace"><code>Events</code> is a Namespace</a></h1>
+<p>If you have done UI programming before, you are already familiar with the concept of MVC. In a traditional MVC programming paradigm, models are the data, views are the UI elements you see, and view controllers are the coordinators between the models and the views. To be precise, the view controllers are responsible for:</p>
 
-<p>When you come across Backbone's <code>Events</code> for the first time, you'll notice it is a little different from the other Backbone classes. Unlike <code>Model</code>/<code>Collection</code>/<code>View</code>, <code>Events</code> is plural. More intriguing is the fact that you do not recall any code that directly instantiates or uses Backbone's <code>Events</code>.</p>
+<ol>
+<li>when models change, update the views.</li>
+<li>when the views are manipulated (i.e. a button is clicked), update the models.</li>
+</ol>
 
-<p>The differences arise from the fact that <code>Events</code> is not a <em>class</em>. Backbone's <code>Model</code>, <code>Collection</code>, <code>View</code> and <code>Router</code> are all <em>classes</em>, or <em>constructors</em>. In JavaScript, the way you use a class is to <em>new</em> it up, then call methods on the instance:</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">andrew</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">();</span>
-<span class="nx">andrew</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span> <span class="s2">&quot;male&quot;</span><span class="p">);</span>
-<span class="nx">person</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">);</span>
+<p>How does this apply to <code>Backbone</code>?  <code>Backbone</code>'s <code>Model</code> is exactly the model in MVC. The DOM elements are the user interface, so the DOM elements are the views in MVC. <code>Backbone</code>'s <code>View</code> is the coordinator between the DOM and the models, and hence it is really the controller in <code>MVC</code>.</p>
+
+<p>It is very unfortunate and confusing that the name <code>View</code> is chosen for controllers in <code>Backbone</code>, but it helps to differentiate <code>View</code>s from <code>Router</code>s, which is another kind of controller in <code>Backbone</code> we'll learn about in another chapter.</p>
+
+<hr />
+
+<h2>Learning is most effective when you practice what you learn. While you read the chapter below, you should try running the code <a href="../apps/playground/playground.html">here</a>. It's just a simple web app where I have set up in a way that you can begin writing <code>Backbone</code> code right away. I have also set up various DOM elements so that you can practice Backbone <code>View</code>.</h2>
+
+<h1><a id="namspace"><code>el</code> and $el</a></h1>
+
+<p>Every <code>View</code> is responsible for some DOM elements, which the <code>View</code> might modify in various ways: append/remove a subview, show/hide a subview, move the positions and change the css styles. But there is always top-level DOM element beyond which the <code>View</code> does not touch. That top-level element the <code>View</code> is responsible for is the <code>el</code> property.</p>
+
+<p>You would typically assign <code>el</code> during class <em>instantiation</em> time:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Playground</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">playground</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Playground</span><span class="p">({</span> <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;.playground&#39;</span> <span class="p">});</span>
+</code></pre>
+</div>
+
+
+<p>Alternatively, you can assign <code>el</code> during class <em>definition</em> time:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Playground</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;.playground&#39;</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">playground</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Playground</span><span class="p">();</span>
+</code></pre>
+</div>
+
+
+<p>After you assigned <code>el</code>, you might want to get it back:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">alert</span><span class="p">(</span><span class="nx">playground</span><span class="p">.</span><span class="nx">el</span> <span class="k">instanceof</span> <span class="nx">HTMLElement</span><span class="p">);</span> <span class="c1">// returns true</span>
 </code></pre>
 </div>
 

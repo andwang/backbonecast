@@ -1,6 +1,27 @@
 #editor {
   position: relative;
-	width: 70%;
+  width: 76%;
   height: 100%;
-	font-size: 20px;
+  font-size: 20px;
+}
+
+.run {
+  margin: 10px 0px;
+}
+
+.result {
+  margin: 10px 0px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.playground {
+  margin: 10px 0px;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.the-footer ul {
+  list-style: square;
 }
